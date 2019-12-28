@@ -9,35 +9,56 @@
     http://www.hakkeray.com/datascience/2019/12/07/thinking-outside-the-lego-box.html
 
 ---
-## Executive Summary
+## Introduction
 
 The goal of this project is to recommend business strategies for increasing sales and saving costs for the Northwind company. This project is based on a fictitious business database created by Microsoft for the use of practicing SQL, hypothesis testing and other data analysis related projects. 
 
 Below are 4 hypotheses (each including a null hypothesis and alternative hypothesis) which I will test for statistical significance to determine if there are any relationships which would be useful from a strategic business perspective. Following this I will summarize the results, make final recommendations, and propose ideas for future analytical work.
 
+--------------------------
+## Objectives
+
+**H1: Discount and Order Quantity**
+
+Does discount amount have a statistically significant effect on order quantity? If so, at what level(s) of discount?
+
+**H2: Countries and Order Quantity: Discount vs Full Price**
+
+Do order quantities of individual countries differ when discounted vs full price?
+
+**H3: Region and Order Revenue**
+
+Does region have a statistically significant effect on average revenue per order?
+
+**H4: Month and Order Quantity**
+
+Does time of year have a statistically significant effect on average revenue per order?
+
 ---
-## Outline
+## Process Outline
 
-*Statistical Analysis Pipeline*
+Outline of process I will follow in order to answer questions above:
 
-For each question below, I will follow a standard process of work as outlined here:
 - Question
-    - Hypotheses
-    - Exploratory Data Analysis (EDA)
+    1. Hypotheses
+    2. Exploratory Data Analysis (EDA)
         - Select dataset
         - Group data
         - Explore data
-    - Test 
+    3. Assumption Tests:
         - Sample size
         - Normality and Variance
+    4. Statistical Tests:
         - Statistical test
         - Effect size (if necessary)
         - Post-hoc tests (if necessary)
-    - Analyze Results
+    5. Summarize Results
 
 ---
 
-The statistical testing process is as follows (section 1.4 above):
+## Statistical Analysis Pipeline 
+
+For #3 and #4 above (Assumption and Statistical Tests):
 
 1. Check if sample sizes allow us to ignore assumptions by visualizing sample size comparisons for two groups (normality check).
     * Bar Plot: SEM (Standard Error of the Mean)
@@ -65,8 +86,6 @@ Factorial DOE with one factor and one blocking variable	Friedman test
         - stats.mannwhitneyu()
     * ANOVA
         - stats.f_oneway()
-    * Tukey's
-        - statsmodels.stats.multicomp.pairwise_tukeyhsd
 
 4. Calculate effect size for significant results.
     * Effect size: 
@@ -80,35 +99,7 @@ Factorial DOE with one factor and one blocking variable	Friedman test
 
 5. If significant, follow up with post-hoc tests (if have more than 2 groups)
     * Tukey's
-
---------------------------
-## Table of Contents
-
-- Data Prep
-
-**H1: Discount and Order Quantity**
-
-Does discount amount have a statistically significant effect on order quantity? If so, at what level(s) of discount?
-
-**H2: Countries and Order Quantity: Discount vs Full Price**
-
-Do order quantities of individual countries differ when discounted vs full price?
-
-**H3: Region and Order Revenue**
-
-Does region have a statistically significant effect on average revenue per order?
-
-**H4: Time of Year (Month) and Order Revenue**
-
-Does time of year have a statistically significant effect on average revenue per order?
-
-- Conclusion
-
-- Recommendations
-
-- Future Work
-    * A. Product Recommendation Tool
-    * B. Free/Discounted Shipping
+        - statsmodels.stats.multicomp.pairwise_tukeyhsd
 
 ## Data Prep
 
@@ -124,41 +115,41 @@ from fsds_100719.imports import *
 
 
 <style  type="text/css" >
-</style><table id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054" ><caption>Loaded Packages and Handles</caption><thead>    <tr>        <th class="col_heading level0 col0" >Handle</th>        <th class="col_heading level0 col1" >Package</th>        <th class="col_heading level0 col2" >Description</th>    </tr></thead><tbody>
+</style><table id="T_150516d2_293d_11ea_824d_f40f2405a054" ><caption>Loaded Packages and Handles</caption><thead>    <tr>        <th class="col_heading level0 col0" >Handle</th>        <th class="col_heading level0 col1" >Package</th>        <th class="col_heading level0 col2" >Description</th>    </tr></thead><tbody>
                 <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row0_col0" class="data row0 col0" >dp</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row0_col1" class="data row0 col1" >IPython.display</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row0_col2" class="data row0 col2" >Display modules with helpful display and clearing commands.</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col0" class="data row0 col0" >dp</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col1" class="data row0 col1" >IPython.display</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col2" class="data row0 col2" >Display modules with helpful display and clearing commands.</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row1_col0" class="data row1 col0" >fs</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row1_col1" class="data row1 col1" >fsds_100719</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row1_col2" class="data row1 col2" >Custom data science bootcamp student package</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col0" class="data row1 col0" >fs</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col1" class="data row1 col1" >fsds_100719</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col2" class="data row1 col2" >Custom data science bootcamp student package</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row2_col0" class="data row2 col0" >mpl</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row2_col1" class="data row2 col1" >matplotlib</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row2_col2" class="data row2 col2" >Matplotlib's base OOP module with formatting artists</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col0" class="data row2 col0" >mpl</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col1" class="data row2 col1" >matplotlib</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col2" class="data row2 col2" >Matplotlib's base OOP module with formatting artists</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row3_col0" class="data row3 col0" >plt</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row3_col1" class="data row3 col1" >matplotlib.pyplot</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row3_col2" class="data row3 col2" >Matplotlib's matlab-like plotting module</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col0" class="data row3 col0" >plt</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col1" class="data row3 col1" >matplotlib.pyplot</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col2" class="data row3 col2" >Matplotlib's matlab-like plotting module</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row4_col0" class="data row4 col0" >np</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row4_col1" class="data row4 col1" >numpy</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row4_col2" class="data row4 col2" >scientific computing with Python</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col0" class="data row4 col0" >np</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col1" class="data row4 col1" >numpy</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col2" class="data row4 col2" >scientific computing with Python</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row5_col0" class="data row5 col0" >pd</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row5_col1" class="data row5 col1" >pandas</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row5_col2" class="data row5 col2" >High performance data structures and tools</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col0" class="data row5 col0" >pd</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col1" class="data row5 col1" >pandas</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col2" class="data row5 col2" >High performance data structures and tools</td>
             </tr>
             <tr>
-                                <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row6_col0" class="data row6 col0" >sns</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row6_col1" class="data row6 col1" >seaborn</td>
-                        <td id="T_e33ff4f8_2434_11ea_9a59_f40f2405a054row6_col2" class="data row6 col2" >High-level data visualization library based on matplotlib</td>
+                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col0" class="data row6 col0" >sns</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col1" class="data row6 col1" >seaborn</td>
+                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col2" class="data row6 col2" >High-level data visualization library based on matplotlib</td>
             </tr>
     </tbody></table>
 
@@ -172,6 +163,7 @@ import fsds_100719 as fs
 
 ```python
 #fs.ft.hakkeray.hot_stats()
+#!pip install researchpy
 ```
 
 
@@ -446,94 +438,69 @@ df_orderDetail['discounted'].value_counts()
 
 
 ```python
-# split orders into two groups: discount and fullprice
+# split orders into two groups (series): discount and fullprice order quantity
 fullprice = df_orderDetail.groupby('discounted').get_group(0)['Quantity']
 discount = df_orderDetail.groupby('discounted').get_group(1)['Quantity']
-
-display(fullprice.head())
-display(discount.head())
 ```
-
-
-    0    12
-    1    10
-    2     5
-    3     9
-    4    40
-    Name: Quantity, dtype: int64
-
-
-
-    6     35
-    7     15
-    8      6
-    9     15
-    11    40
-    Name: Quantity, dtype: int64
-
 
 ### Explore
 
 
 ```python
-fullprice.mean()
+diff = (discount.mean() - fullprice.mean())
+diff
 ```
 
 
 
 
-    21.715261958997722
+    5.394523243866239
 
 
 
 
 ```python
-discount.mean()
+# visually inspect differences in mean and StDev of distributions
+sns.set_style("whitegrid")
+%config InlineBackend.figure_format='retina'
+%matplotlib inline
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca()
+
+ax.axvline(fullprice.mean(), color='blue', lw=2, ls='--', label='FP Avg')
+ax.axvline(discount.mean(), color='orange', lw=2, ls='--', label='DC Avg')
+
+fdict = {'fontfamily': 'PT Mono','fontsize': 16}
+
+sns.distplot(fullprice, ax=ax, hist=True, kde=True, color='blue')
+sns.distplot(discount, ax=ax, hist=True, kde=True, color='orange')
+ax.legend(['Full Price', 'Discount'])
+ax.set_title("Distribution of Full Price vs Discount Order Quantity", fontdict=fdict)
 ```
 
 
 
 
-    27.10978520286396
+    Text(0.5, 1.0, 'Distribution of Full Price vs Discount Order Quantity')
 
 
 
-At first glance it looks like the average quantities are indeed higher for discounted orders compared to those that are full price.
+
+![png](output_25_1.png)
+
 
 
 ```python
-## Examine KDEs
-fig, ax = plt.subplots(figsize=(10,6))
-
-group1 = {'name':'fullprice',
-         'data':fullprice,
-         'n':fullprice.value_counts()}
-plot1 = {'hist_kws':dict(color='blue',lw=2, ls='-')}
-
-group2 = {'name':'discount',
-         'data':discount,
-         'n':discount.value_counts()}
-plot2 = {'hist_kws':dict(color='orange',lw=2, ls='-')}
-
-
-label1= f"{group1['name']} n={group1['n']}"
-sns.distplot(group1['data'], label=label1,
-             ax=ax, hist_kws=plot1['hist_kws'])
-# ax.legend()
-
-label2= f"{group2['name']} n={group2['n']}"
-sns.distplot(group2['data'], label=label2,
-             ax=ax,hist_kws=plot2['hist_kws'])
-# ax.legend()
-
-ax.axvline(group1['data'].mean(),color=plot1['hist_kws']['color'], ls='--')
-ax.axvline(group2['data'].mean(),color=plot2['hist_kws']['color'], ls='--')
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca()
+ax = sns.barplot(x='Discount', y='Quantity', data=df_orderDetail)
+ax.set_title('Discount Levels and Order Qty', fontdict={'family': 'PT Mono', 'size':16})
 ```
 
 
 
 
-    <matplotlib.lines.Line2D at 0x1a1f509f98>
+    Text(0.5, 1.0, 'Discount Levels and Order Qty')
 
 
 
@@ -541,7 +508,9 @@ ax.axvline(group2['data'].mean(),color=plot2['hist_kws']['color'], ls='--')
 ![png](output_26_1.png)
 
 
-## Test
+We can already see that there is a clear relationship between order quantity and specific discount levels before running any statistical tests. However, what is more interesting to note from the visualization above is that the discount levels that DO have an effect appear to be very similar as far as the mean order quantity. The indication is that discount amount produces diminishing returns (offering a discount higher than 5% - the minimum effective amount - does not actually produce higher order quantity which means we are losing revenue we would have otherwise captured).
+
+## Assumption Tests
 **Select the appropriate t-test based on tests for the assumptions of normality and homogeneity of variance.**
 
 ### Sample Size
@@ -552,18 +521,19 @@ Check if sample sizes allow us to ignore assumptions; if not, test assumption no
 # visualize sample size comparisons for two groups (normality check)
 import scipy.stats as stat
 plt.bar(x='Full Price', height=fullprice.mean(), yerr=stat.sem(fullprice))
-plt.bar(x='Discounted', height=discount.mean(), yerr=stat.sem(discount))
+plt.bar(x='Discount', height=discount.mean(), yerr=stat.sem(discount))
+plt.title("Order Quantity Sample Sizes: Full Price vs Discount")
 ```
 
 
 
 
-    <BarContainer object of 1 artists>
+    Text(0.5, 1.0, 'Order Quantity Sample Sizes: Full Price vs Discount')
 
 
 
 
-![png](output_29_1.png)
+![png](output_30_1.png)
 
 
 ### Normality Test
@@ -1216,18 +1186,11 @@ discount_labels = df_orderDetail['Discount'].values
 from statsmodels.stats.multicomp import MultiComparison
 oqd = MultiComparison(oq_data, discount_labels)
 results = oqd.tukeyhsd()
-results.plot_simultaneous(comparison_name=0.25, xlabel='order qty', ylabel='discount level')
+results.plot_simultaneous(comparison_name=0.05, xlabel='Order Quantity', ylabel='Discount Level');
 ```
 
 
-
-
-![png](output_37_0.png)
-
-
-
-
-![png](output_37_1.png)
+![png](output_38_0.png)
 
 
 ### Effect Size
@@ -1272,418 +1235,67 @@ Cohen_d(discount, fullprice)
 
 
 ```python
-df_oqd = df_orderDetail.loc[(df_orderDetail['Discount'] >= 0.05) & (df_orderDetail['Discount'] != 0.06) & (df_orderDetail['Discount'] != 0.1)]
-df_oqd
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Id</th>
-      <th>OrderId</th>
-      <th>ProductId</th>
-      <th>UnitPrice</th>
-      <th>Quantity</th>
-      <th>Discount</th>
-      <th>discounted</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>6</td>
-      <td>10250/51</td>
-      <td>10250</td>
-      <td>51</td>
-      <td>42.4</td>
-      <td>35</td>
-      <td>0.15</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>10250/65</td>
-      <td>10250</td>
-      <td>65</td>
-      <td>16.8</td>
-      <td>15</td>
-      <td>0.15</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>10251/22</td>
-      <td>10251</td>
-      <td>22</td>
-      <td>16.8</td>
-      <td>6</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>10251/57</td>
-      <td>10251</td>
-      <td>57</td>
-      <td>15.6</td>
-      <td>15</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>10252/20</td>
-      <td>10252</td>
-      <td>20</td>
-      <td>64.8</td>
-      <td>40</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <td>2129</td>
-      <td>11076/19</td>
-      <td>11076</td>
-      <td>19</td>
-      <td>9.2</td>
-      <td>10</td>
-      <td>0.25</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2130</td>
-      <td>11077/2</td>
-      <td>11077</td>
-      <td>2</td>
-      <td>19.0</td>
-      <td>24</td>
-      <td>0.20</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2134</td>
-      <td>11077/7</td>
-      <td>11077</td>
-      <td>7</td>
-      <td>30.0</td>
-      <td>1</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2137</td>
-      <td>11077/12</td>
-      <td>11077</td>
-      <td>12</td>
-      <td>38.0</td>
-      <td>2</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2144</td>
-      <td>11077/39</td>
-      <td>11077</td>
-      <td>39</td>
-      <td>18.0</td>
-      <td>2</td>
-      <td>0.05</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>657 rows × 7 columns</p>
-</div>
-
-
-
-
-```python
-df_oqd['OQD'] = 1
-df_oqd
-```
-
-    /Users/hakkeray/opt/anaconda3/envs/learn-env/lib/python3.6/site-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-      """Entry point for launching an IPython kernel.
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Id</th>
-      <th>OrderId</th>
-      <th>ProductId</th>
-      <th>UnitPrice</th>
-      <th>Quantity</th>
-      <th>Discount</th>
-      <th>discounted</th>
-      <th>OQD</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>6</td>
-      <td>10250/51</td>
-      <td>10250</td>
-      <td>51</td>
-      <td>42.4</td>
-      <td>35</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>10250/65</td>
-      <td>10250</td>
-      <td>65</td>
-      <td>16.8</td>
-      <td>15</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>10251/22</td>
-      <td>10251</td>
-      <td>22</td>
-      <td>16.8</td>
-      <td>6</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>10251/57</td>
-      <td>10251</td>
-      <td>57</td>
-      <td>15.6</td>
-      <td>15</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>10252/20</td>
-      <td>10252</td>
-      <td>20</td>
-      <td>64.8</td>
-      <td>40</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <td>2129</td>
-      <td>11076/19</td>
-      <td>11076</td>
-      <td>19</td>
-      <td>9.2</td>
-      <td>10</td>
-      <td>0.25</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2130</td>
-      <td>11077/2</td>
-      <td>11077</td>
-      <td>2</td>
-      <td>19.0</td>
-      <td>24</td>
-      <td>0.20</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2134</td>
-      <td>11077/7</td>
-      <td>11077</td>
-      <td>7</td>
-      <td>30.0</td>
-      <td>1</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2137</td>
-      <td>11077/12</td>
-      <td>11077</td>
-      <td>12</td>
-      <td>38.0</td>
-      <td>2</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2144</td>
-      <td>11077/39</td>
-      <td>11077</td>
-      <td>39</td>
-      <td>18.0</td>
-      <td>2</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>657 rows × 8 columns</p>
-</div>
-
-
-
-
-```python
-#df_oqd.groupby(['Discount'])['Quantity'].mean().plot.bar()
-plt.bar(x=df_oqd.groupby(['Discount'])['Quantity'].mean(), height=df_oqd.Quantity.mean(), yerr=df_oqd.Discount.sem())
-```
-
-
-
-
-    <BarContainer object of 4 artists>
-
-
-
-
-![png](output_44_1.png)
-
-
-
-```python
-df_orderDetail['OQD'] = df_oqd['OQD']
-df_orderDetail['OQD'].fillna(0, inplace=True)
-df_orderDetail['OQD'].value_counts()
-```
-
-
-
-
-    0.0    1498
-    1.0     657
-    Name: OQD, dtype: int64
-
-
-
-
-```python
-# dataframe containing insignificant discount levels
-fullprice_df = df_orderDetail.loc[df_orderDetail['OQD'] == 0]
-# dataframe containing significant discount levels
-discount_df = df_orderDetail.loc[df_orderDetail['OQD'] == 1]
+# Create dataframe with 5% discount orders and re-calculate significance and effect 
+df_dctLosses = df_orderDetail.loc[(df_orderDetail['discounted'] == True) & (df_orderDetail['Discount'] != 0.05)]
+df_dctGains = df_orderDetail.loc[(df_orderDetail['Discount'] == 0.05)]
 ```
 
 
 ```python
-mean_qty_fp = fullprice_df.Quantity.mean()
-mean_qty_dc = discount_df.Quantity.mean()
-print(mean_qty_fp, mean_qty_dc)
-```
+print('5 Percent Discount Orders')
+display(df_dcFive.describe(), display_id='df_dcFive')
+print('Ineffective Discount Orders')
+display(df_dcLosses.describe(), display_id='df_dcLosses')
 
-    22.01535380507343 27.911719939117198
-
-
-
-```python
-diff = mean_qty_dc - mean_qty_fp
-diff
-```
-
-
-
-
-    5.896366134043767
-
-
-
-
-```python
-from pandas_profiling import ProfileReport
-#ProfileReport(df_oqd)
 ```
 
 
 ```python
-sns.distplot(df_orderDetail.Quantity)
-sns.distplot(df_oqd.Quantity)
+# insert boolean column for discount orders that affect order quantity
+df_orderDetail['dc_effect'] = np.where(df_orderDetail['Discount'] == 0.05, 1, 0)
+
+
+
+# split orders into two groups: 
+dc_loss = df_orderDetail.groupby('dc_effect').get_group(0)['Quantity']
+dc_five = df_orderDetail.groupby('dc_effect').get_group(1)['Quantity']
 ```
 
 
+```python
+# compare discount orders
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca(title="Distribution of Discounted Order Groups", xlabel="Avg Quantity Per Order")
+sns.distplot(dc_loss)
+sns.distplot(dc_five)
+ax.legend(['Ineffective', 'Five %'])
+```
+
+The mean quantity per order is similar for each of the discount levels that we identified as significant. The obvious conclusion to draw from this is that offering a discount higher than 5% does not increase the order quantities; higher discounts only produce higher loss in revenue.
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c22df1588>
+```python
+# Extract revenue lost per discounted order where discount had no effect on order quantity
+cur.execute("""SELECT Discount, 
+                SUM(UnitPrice * Quantity) as 'revLoss',
+                COUNT(OrderId) as 'NumOrders'
+                FROM orderDetail  
+                GROUP BY Discount
+                HAVING Discount != 0 AND Discount != 0.05
+                ORDER BY revLoss DESC;""")
+df = pd.DataFrame(cur.fetchall())
+df. columns = [i[0] for i in cur.description]
+print(len(df))
+df.head()
+
+```
 
 
-
-
-![png](output_50_1.png)
-
+```python
+print("Total Revenue Forfeited $", df.revLoss.sum())
+print("Number of Orders Affected ", df.NumOrders.sum())
+print("Avg Forfeited Per Order $", df.revLoss.sum()/df.NumOrders.sum())
+```
 
 ## Analyze Results
 
@@ -1864,7 +1476,6 @@ display(df_orderDetail.head())
       <th>Quantity</th>
       <th>Discount</th>
       <th>discounted</th>
-      <th>OQD</th>
     </tr>
   </thead>
   <tbody>
@@ -1877,7 +1488,6 @@ display(df_orderDetail.head())
       <td>12</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <td>1</td>
@@ -1888,7 +1498,6 @@ display(df_orderDetail.head())
       <td>10</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <td>2</td>
@@ -1899,7 +1508,6 @@ display(df_orderDetail.head())
       <td>5</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1910,7 +1518,6 @@ display(df_orderDetail.head())
       <td>9</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
     </tr>
     <tr>
       <td>4</td>
@@ -1921,7 +1528,6 @@ display(df_orderDetail.head())
       <td>40</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -2060,8 +1666,6 @@ display(df_order.head())
 </table>
 </div>
 
-
-### Explore
 
 
 ```python
@@ -2205,14 +1809,202 @@ display(df_order.head())
 </div>
 
 
+
+```python
+df_country = df_orderDetail.merge(df_order, on='OrderId', copy=True)
+```
+
+### Explore
+
+
+```python
+fs.ft.hakkeray.hot_stats(df_country, 'ShipCountry')
+```
+
+    -------->
+    HOT!STATS
+    <--------
+    
+    SHIPCOUNTRY
+    Data Type: object
+    
+    min    Argentina
+    max    Venezuela
+    Name: ShipCountry, dtype: object 
+    
+    à-la-Mode: 
+    0    USA
+    dtype: object
+    
+    
+    No Nulls Found!
+    
+    Non-Null Value Counts:
+    USA            352
+    Germany        328
+    Brazil         203
+    France         184
+    UK             135
+    Austria        125
+    Venezuela      118
+    Sweden          97
+    Canada          75
+    Mexico          72
+    Belgium         56
+    Ireland         55
+    Spain           54
+    Finland         54
+    Italy           53
+    Switzerland     52
+    Denmark         46
+    Argentina       34
+    Portugal        30
+    Norway          16
+    Poland          16
+    Name: ShipCountry, dtype: int64
+    
+    # Unique Values: 21
+    
+
+
 ### Group
 
 
 ```python
-df_countries = df_orderDetail.merge(df_order, on='OrderId', copy=True)
-df_countries.head()
+countries = df_country.groupby('ShipCountry').groups
+countries.keys()
 ```
 
+
+
+
+    dict_keys(['Argentina', 'Austria', 'Belgium', 'Brazil', 'Canada', 'Denmark', 'Finland', 'France', 'Germany', 'Ireland', 'Italy', 'Mexico', 'Norway', 'Poland', 'Portugal', 'Spain', 'Sweden', 'Switzerland', 'UK', 'USA', 'Venezuela'])
+
+
+
+
+```python
+df_countries = df_country[['ShipCountry','Quantity','discounted']].copy()
+df_countries.ShipCountry.value_counts()
+```
+
+
+
+
+    USA            352
+    Germany        328
+    Brazil         203
+    France         184
+    UK             135
+    Austria        125
+    Venezuela      118
+    Sweden          97
+    Canada          75
+    Mexico          72
+    Belgium         56
+    Ireland         55
+    Spain           54
+    Finland         54
+    Italy           53
+    Switzerland     52
+    Denmark         46
+    Argentina       34
+    Portugal        30
+    Norway          16
+    Poland          16
+    Name: ShipCountry, dtype: int64
+
+
+
+
+```python
+import researchpy as rp
+rp.summary_cont(df_countries.groupby(['discounted']))
+```
+
+    
+    
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">Quantity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>N</th>
+      <th>Mean</th>
+      <th>SD</th>
+      <th>SE</th>
+      <th>95% Conf.</th>
+      <th>Interval</th>
+    </tr>
+    <tr>
+      <th>discounted</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1317</td>
+      <td>21.715262</td>
+      <td>17.507493</td>
+      <td>0.482426</td>
+      <td>20.769706</td>
+      <td>22.660818</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>838</td>
+      <td>27.109785</td>
+      <td>20.771439</td>
+      <td>0.717537</td>
+      <td>25.703412</td>
+      <td>28.516159</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+display(rp.summary_cont(fp))
+display(rp.summary_cont(dc))
+```
+
+    
+    
 
 
 
@@ -2234,230 +2026,513 @@ df_countries.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Id</th>
-      <th>OrderId</th>
-      <th>ProductId</th>
-      <th>UnitPrice</th>
-      <th>Quantity</th>
-      <th>Discount</th>
-      <th>discounted</th>
-      <th>OQD</th>
-      <th>CustomerId</th>
-      <th>EmployeeId</th>
-      <th>...</th>
-      <th>RequiredDate</th>
-      <th>ShippedDate</th>
-      <th>ShipVia</th>
-      <th>Freight</th>
-      <th>ShipName</th>
-      <th>ShipAddress</th>
-      <th>ShipCity</th>
-      <th>ShipRegion</th>
-      <th>ShipPostalCode</th>
-      <th>ShipCountry</th>
+      <th>Variable</th>
+      <th>N</th>
+      <th>Mean</th>
+      <th>SD</th>
+      <th>SE</th>
+      <th>95% Conf.</th>
+      <th>Interval</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>10248/11</td>
-      <td>10248</td>
-      <td>11</td>
-      <td>14.0</td>
-      <td>12</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>VINET</td>
-      <td>5</td>
-      <td>...</td>
-      <td>2012-08-01</td>
-      <td>2012-07-16</td>
-      <td>3</td>
-      <td>32.38</td>
-      <td>Vins et alcools Chevalier</td>
-      <td>59 rue de l'Abbaye</td>
-      <td>Reims</td>
-      <td>Western Europe</td>
-      <td>51100</td>
-      <td>France</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>10248/42</td>
-      <td>10248</td>
-      <td>42</td>
-      <td>9.8</td>
-      <td>10</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>VINET</td>
-      <td>5</td>
-      <td>...</td>
-      <td>2012-08-01</td>
-      <td>2012-07-16</td>
-      <td>3</td>
-      <td>32.38</td>
-      <td>Vins et alcools Chevalier</td>
-      <td>59 rue de l'Abbaye</td>
-      <td>Reims</td>
-      <td>Western Europe</td>
-      <td>51100</td>
-      <td>France</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>10248/72</td>
-      <td>10248</td>
-      <td>72</td>
-      <td>34.8</td>
-      <td>5</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>VINET</td>
-      <td>5</td>
-      <td>...</td>
-      <td>2012-08-01</td>
-      <td>2012-07-16</td>
-      <td>3</td>
-      <td>32.38</td>
-      <td>Vins et alcools Chevalier</td>
-      <td>59 rue de l'Abbaye</td>
-      <td>Reims</td>
-      <td>Western Europe</td>
-      <td>51100</td>
-      <td>France</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>10249/14</td>
-      <td>10249</td>
-      <td>14</td>
-      <td>18.6</td>
-      <td>9</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>TOMSP</td>
-      <td>6</td>
-      <td>...</td>
-      <td>2012-08-16</td>
-      <td>2012-07-10</td>
-      <td>1</td>
-      <td>11.61</td>
-      <td>Toms Spezialitäten</td>
-      <td>Luisenstr. 48</td>
-      <td>Münster</td>
-      <td>Western Europe</td>
-      <td>44087</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>10249/51</td>
-      <td>10249</td>
-      <td>51</td>
-      <td>42.4</td>
-      <td>40</td>
-      <td>0.0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>TOMSP</td>
-      <td>6</td>
-      <td>...</td>
-      <td>2012-08-16</td>
-      <td>2012-07-10</td>
-      <td>1</td>
-      <td>11.61</td>
-      <td>Toms Spezialitäten</td>
-      <td>Luisenstr. 48</td>
-      <td>Münster</td>
-      <td>Western Europe</td>
-      <td>44087</td>
-      <td>Germany</td>
+      <td>Quantity</td>
+      <td>72.0</td>
+      <td>24.819444</td>
+      <td>14.925473</td>
+      <td>1.758984</td>
+      <td>21.31213</td>
+      <td>28.326759</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 21 columns</p>
+</div>
+
+
+    
+    
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variable</th>
+      <th>N</th>
+      <th>Mean</th>
+      <th>SD</th>
+      <th>SE</th>
+      <th>95% Conf.</th>
+      <th>Interval</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Quantity</td>
+      <td>46.0</td>
+      <td>24.978261</td>
+      <td>16.942372</td>
+      <td>2.498016</td>
+      <td>19.946998</td>
+      <td>30.009524</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
 
 
-
 ```python
-countries = df_countries.groupby('ShipCountry').groups
-countries.keys()
+rp.summary_cont(df_countries.groupby(['ShipCountry', 'discounted']))
 ```
 
-
-
-
-    dict_keys(['Argentina', 'Austria', 'Belgium', 'Brazil', 'Canada', 'Denmark', 'Finland', 'France', 'Germany', 'Ireland', 'Italy', 'Mexico', 'Norway', 'Poland', 'Portugal', 'Spain', 'Sweden', 'Switzerland', 'UK', 'USA', 'Venezuela'])
-
-
-
-
-```python
-df_countries.loc[df_countries['discounted'] == 1]['ShipCountry'].value_counts()
-```
+    
+    
 
 
 
 
-    Germany        150
-    USA            142
-    Brazil          95
-    France          77
-    Austria         58
-    Venezuela       46
-    Sweden          39
-    Ireland         35
-    Canada          31
-    Italy           27
-    UK              26
-    Switzerland     24
-    Denmark         19
-    Portugal        18
-    Finland         15
-    Spain           14
-    Belgium         14
-    Mexico           8
-    Name: ShipCountry, dtype: int64
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
+    .dataframe thead tr th {
+        text-align: left;
+    }
 
-```python
-df_countries.loc[df_countries['discounted'] == 0]['ShipCountry'].value_counts()
-```
-
-
-
-
-    USA            210
-    Germany        178
-    UK             109
-    Brazil         108
-    France         107
-    Venezuela       72
-    Austria         67
-    Mexico          64
-    Sweden          58
-    Canada          44
-    Belgium         42
-    Spain           40
-    Finland         39
-    Argentina       34
-    Switzerland     28
-    Denmark         27
-    Italy           26
-    Ireland         20
-    Poland          16
-    Norway          16
-    Portugal        12
-    Name: ShipCountry, dtype: int64
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="6" halign="left">Quantity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>N</th>
+      <th>Mean</th>
+      <th>SD</th>
+      <th>SE</th>
+      <th>95% Conf.</th>
+      <th>Interval</th>
+    </tr>
+    <tr>
+      <th>ShipCountry</th>
+      <th>discounted</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Argentina</td>
+      <td>0</td>
+      <td>34</td>
+      <td>9.970588</td>
+      <td>7.030174</td>
+      <td>1.205665</td>
+      <td>7.607485</td>
+      <td>12.333692</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Austria</td>
+      <td>0</td>
+      <td>67</td>
+      <td>39.746269</td>
+      <td>26.867432</td>
+      <td>3.282379</td>
+      <td>33.312805</td>
+      <td>46.179732</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>58</td>
+      <td>43.172414</td>
+      <td>30.972052</td>
+      <td>4.066830</td>
+      <td>35.201428</td>
+      <td>51.143400</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Belgium</td>
+      <td>0</td>
+      <td>42</td>
+      <td>23.380952</td>
+      <td>13.817543</td>
+      <td>2.132093</td>
+      <td>19.202050</td>
+      <td>27.559855</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>14</td>
+      <td>29.285714</td>
+      <td>15.284122</td>
+      <td>4.084854</td>
+      <td>21.279401</td>
+      <td>37.292027</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Brazil</td>
+      <td>0</td>
+      <td>108</td>
+      <td>21.750000</td>
+      <td>13.705259</td>
+      <td>1.318789</td>
+      <td>19.165173</td>
+      <td>24.334827</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>95</td>
+      <td>19.978947</td>
+      <td>13.977930</td>
+      <td>1.434105</td>
+      <td>17.168101</td>
+      <td>22.789794</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Canada</td>
+      <td>0</td>
+      <td>44</td>
+      <td>20.704545</td>
+      <td>15.745918</td>
+      <td>2.373786</td>
+      <td>16.051924</td>
+      <td>25.357167</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>31</td>
+      <td>34.612903</td>
+      <td>19.409066</td>
+      <td>3.485971</td>
+      <td>27.780400</td>
+      <td>41.445407</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Denmark</td>
+      <td>0</td>
+      <td>27</td>
+      <td>25.740741</td>
+      <td>13.877465</td>
+      <td>2.670719</td>
+      <td>20.506131</td>
+      <td>30.975351</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>19</td>
+      <td>25.000000</td>
+      <td>17.117243</td>
+      <td>3.926965</td>
+      <td>17.303149</td>
+      <td>32.696851</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Finland</td>
+      <td>0</td>
+      <td>39</td>
+      <td>15.589744</td>
+      <td>10.715748</td>
+      <td>1.715893</td>
+      <td>12.226593</td>
+      <td>18.952894</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>15</td>
+      <td>18.466667</td>
+      <td>11.734361</td>
+      <td>3.029799</td>
+      <td>12.528260</td>
+      <td>24.405073</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">France</td>
+      <td>0</td>
+      <td>107</td>
+      <td>16.971963</td>
+      <td>12.001146</td>
+      <td>1.160195</td>
+      <td>14.697981</td>
+      <td>19.245944</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>77</td>
+      <td>18.675325</td>
+      <td>11.074439</td>
+      <td>1.262049</td>
+      <td>16.201708</td>
+      <td>21.148942</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Germany</td>
+      <td>0</td>
+      <td>178</td>
+      <td>26.230337</td>
+      <td>18.992647</td>
+      <td>1.423559</td>
+      <td>23.440161</td>
+      <td>29.020513</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>150</td>
+      <td>30.293333</td>
+      <td>21.487798</td>
+      <td>1.754471</td>
+      <td>26.854569</td>
+      <td>33.732097</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Ireland</td>
+      <td>0</td>
+      <td>20</td>
+      <td>27.950000</td>
+      <td>20.155905</td>
+      <td>4.506997</td>
+      <td>19.116285</td>
+      <td>36.783715</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>35</td>
+      <td>32.142857</td>
+      <td>20.121897</td>
+      <td>3.401221</td>
+      <td>25.476463</td>
+      <td>38.809251</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Italy</td>
+      <td>0</td>
+      <td>26</td>
+      <td>14.307692</td>
+      <td>10.664968</td>
+      <td>2.091572</td>
+      <td>10.208211</td>
+      <td>18.407174</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>27</td>
+      <td>16.666667</td>
+      <td>11.378117</td>
+      <td>2.189720</td>
+      <td>12.374816</td>
+      <td>20.958517</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Mexico</td>
+      <td>0</td>
+      <td>64</td>
+      <td>13.703125</td>
+      <td>8.956118</td>
+      <td>1.119515</td>
+      <td>11.508876</td>
+      <td>15.897374</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>8</td>
+      <td>18.500000</td>
+      <td>14.764823</td>
+      <td>5.220153</td>
+      <td>8.268500</td>
+      <td>28.731500</td>
+    </tr>
+    <tr>
+      <td>Norway</td>
+      <td>0</td>
+      <td>16</td>
+      <td>10.062500</td>
+      <td>4.611128</td>
+      <td>1.152782</td>
+      <td>7.803047</td>
+      <td>12.321953</td>
+    </tr>
+    <tr>
+      <td>Poland</td>
+      <td>0</td>
+      <td>16</td>
+      <td>12.812500</td>
+      <td>8.439737</td>
+      <td>2.109934</td>
+      <td>8.677029</td>
+      <td>16.947971</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Portugal</td>
+      <td>0</td>
+      <td>12</td>
+      <td>19.083333</td>
+      <td>12.522404</td>
+      <td>3.614907</td>
+      <td>11.998116</td>
+      <td>26.168550</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>18</td>
+      <td>16.888889</td>
+      <td>8.976367</td>
+      <td>2.115750</td>
+      <td>12.742019</td>
+      <td>21.035759</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Spain</td>
+      <td>0</td>
+      <td>40</td>
+      <td>10.625000</td>
+      <td>9.859754</td>
+      <td>1.558964</td>
+      <td>7.569431</td>
+      <td>13.680569</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>14</td>
+      <td>20.928571</td>
+      <td>12.034976</td>
+      <td>3.216483</td>
+      <td>14.624265</td>
+      <td>27.232878</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Sweden</td>
+      <td>0</td>
+      <td>58</td>
+      <td>21.534483</td>
+      <td>14.521872</td>
+      <td>1.906815</td>
+      <td>17.797125</td>
+      <td>25.271840</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>39</td>
+      <td>25.282051</td>
+      <td>14.231079</td>
+      <td>2.278796</td>
+      <td>20.815610</td>
+      <td>29.748492</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Switzerland</td>
+      <td>0</td>
+      <td>28</td>
+      <td>24.321429</td>
+      <td>12.789039</td>
+      <td>2.416901</td>
+      <td>19.584302</td>
+      <td>29.058555</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>24</td>
+      <td>24.750000</td>
+      <td>17.323646</td>
+      <td>3.536174</td>
+      <td>17.819098</td>
+      <td>31.680902</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">UK</td>
+      <td>0</td>
+      <td>109</td>
+      <td>17.944954</td>
+      <td>13.164089</td>
+      <td>1.260891</td>
+      <td>15.473608</td>
+      <td>20.416301</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>26</td>
+      <td>30.230769</td>
+      <td>22.016917</td>
+      <td>4.317873</td>
+      <td>21.767739</td>
+      <td>38.693799</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">USA</td>
+      <td>0</td>
+      <td>210</td>
+      <td>24.123810</td>
+      <td>21.934524</td>
+      <td>1.513626</td>
+      <td>21.157103</td>
+      <td>27.090516</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>142</td>
+      <td>30.028169</td>
+      <td>25.023944</td>
+      <td>2.099963</td>
+      <td>25.912242</td>
+      <td>34.144096</td>
+    </tr>
+    <tr>
+      <td rowspan="2" valign="top">Venezuela</td>
+      <td>0</td>
+      <td>72</td>
+      <td>24.819444</td>
+      <td>14.925473</td>
+      <td>1.758984</td>
+      <td>21.371836</td>
+      <td>28.267053</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>46</td>
+      <td>24.978261</td>
+      <td>16.942372</td>
+      <td>2.498016</td>
+      <td>20.082149</td>
+      <td>29.874373</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -2469,19 +2544,34 @@ df_countries.loc[df_countries['discounted'] == 0]['ShipCountry'].value_counts()
 ```python
 # Check if sample sizes allow us to ignore assumptions;
 # visualize sample size comparisons for two groups (normality check)
+
+stat_dict = {}
+
 for k,v in countries.items():
     try:
         grp0 = df_countries.loc[v].groupby('discounted').get_group(0)['Quantity']
         grp1 = df_countries.loc[v].groupby('discounted').get_group(1)['Quantity']
         print(f"{k}")
+        
         import scipy.stats as stat
-        plt.bar(x='Full Price', height=grp0.mean(),
-               yerr=stat.sem(grp0))
-        plt.bar(x='Discounted', height=grp1.mean(),
-               yerr=stat.sem(grp1))
+
+        plt.bar(x='Full Price', height=grp0.mean(), yerr=stat.sem(grp0))
+        plt.bar(x='Discounted', height=grp1.mean(), yerr=stat.sem(grp1))
         plt.show()
+        
+    except:
+        pass
+        
+    try:
+        result = stat.ttest_ind(grp0,grp1)
+        if result[1] < 0.05:
+            stat_dict[k] = result[1]
+            print(f"\n{k} PREFERS DISCOUNTS!")
+        else:
+            continue
     except:
         print(f"{k} does not contain one of the groups.")
+stat_dict
 ```
 
     Argentina does not contain one of the groups.
@@ -2489,147 +2579,186 @@ for k,v in countries.items():
 
 
 
-![png](output_68_1.png)
+![png](output_70_1.png)
 
 
     Belgium
 
 
 
-![png](output_68_3.png)
+![png](output_70_3.png)
 
 
     Brazil
 
 
 
-![png](output_68_5.png)
+![png](output_70_5.png)
 
 
     Canada
 
 
 
-![png](output_68_7.png)
+![png](output_70_7.png)
 
 
+    
+    Canada PREFERS DISCOUNTS!
     Denmark
 
 
 
-![png](output_68_9.png)
+![png](output_70_9.png)
 
 
     Finland
 
 
 
-![png](output_68_11.png)
+![png](output_70_11.png)
 
 
     France
 
 
 
-![png](output_68_13.png)
+![png](output_70_13.png)
 
 
     Germany
 
 
 
-![png](output_68_15.png)
+![png](output_70_15.png)
 
 
     Ireland
 
 
 
-![png](output_68_17.png)
+![png](output_70_17.png)
 
 
     Italy
 
 
 
-![png](output_68_19.png)
+![png](output_70_19.png)
 
 
     Mexico
 
 
 
-![png](output_68_21.png)
+![png](output_70_21.png)
 
 
-    Norway does not contain one of the groups.
-    Poland does not contain one of the groups.
+    
+    Norway PREFERS DISCOUNTS!
     Portugal
 
 
 
-![png](output_68_23.png)
+![png](output_70_23.png)
 
 
     Spain
 
 
 
-![png](output_68_25.png)
+![png](output_70_25.png)
 
 
+    
+    Spain PREFERS DISCOUNTS!
     Sweden
 
 
 
-![png](output_68_27.png)
+![png](output_70_27.png)
 
 
     Switzerland
 
 
 
-![png](output_68_29.png)
+![png](output_70_29.png)
 
 
     UK
 
 
 
-![png](output_68_31.png)
+![png](output_70_31.png)
 
 
+    
+    UK PREFERS DISCOUNTS!
     USA
 
 
 
-![png](output_68_33.png)
+![png](output_70_33.png)
 
 
+    
+    USA PREFERS DISCOUNTS!
     Venezuela
 
 
 
-![png](output_68_35.png)
+![png](output_70_35.png)
+
+
+
+
+
+    {'Canada': 0.0010297982736886485,
+     'Norway': 0.04480094051665529,
+     'Spain': 0.0025087181106716217,
+     'UK': 0.00031794803200322925,
+     'USA': 0.019868707223971476}
+
+
+
+
+```python
+stat_dict
+```
+
+
+
+
+    {'Canada': 0.0010297982736886485,
+     'Norway': 0.04480094051665529,
+     'Spain': 0.0025087181106716217,
+     'UK': 0.00031794803200322925,
+     'USA': 0.019868707223971476}
+
 
 
 ### Normality Test
 
 
 ```python
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca(title="Distribution of Full price vs Discounted Orders")
+
 sns.distplot(grp0)
 sns.distplot(grp1)
+ax.legend(['Full Price','Discounted'])
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1c2461b470>
+    <matplotlib.legend.Legend at 0x1a1f96ef60>
 
 
 
 
-![png](output_70_1.png)
+![png](output_73_1.png)
 
 
 
@@ -2661,35 +2790,6 @@ stat.mannwhitneyu(grp0, grp1)
 
 **Canada, Spain, UK and the USA have pvalues < 0.05 indicating there is a relationship between discount and order quantity and the null hypothesis is rejected for these individual countries.**
 
-
-```python
-# test normality assumption
-for k,v in countries.items():
-    try:
-        grp0 = df_countries.loc[v].groupby('discounted').get_group(0)['Quantity']
-        grp1 = df_countries.loc[v].groupby('discounted').get_group(1)['Quantity']
-        result = stat.ttest_ind(grp0,grp1)
-        if result[1] < 0.05:
-            print(f"\n{k} PREFERS DISCOUNTS!")
-        else:
-            continue
-    except:
-        print(f"{k} does not contain one of the groups.")
-```
-
-    Argentina does not contain one of the groups.
-    
-    Canada PREFERS DISCOUNTS!
-    Norway does not contain one of the groups.
-    Poland does not contain one of the groups.
-    
-    Spain PREFERS DISCOUNTS!
-    
-    UK PREFERS DISCOUNTS!
-    
-    USA PREFERS DISCOUNTS!
-
-
 ### Statistical Test
 
 
@@ -2712,13 +2812,108 @@ anova_table = sm.stats.anova_lm(model, typ=2)
 anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 ```
 
+
+
+
+<style  type="text/css" >
+</style><table id="T_29a39d34_29a8_11ea_aa98_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+                <tr>
+                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row0" class="row_heading level0 row0" >C(discounted)</th>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col0" class="data row0 col0" >9.78092e-08</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col1" class="data row0 col1" >1</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col2" class="data row0 col2" >3.07557e-10</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col3" class="data row0 col3" >0.99999</td>
+            </tr>
+            <tr>
+                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row1" class="row_heading level0 row1" >C(ShipCountry)</th>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col0" class="data row1 col0" >101347</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col1" class="data row1 col1" >20</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col2" class="data row1 col2" >15.9341</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+            </tr>
+            <tr>
+                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row2" class="row_heading level0 row2" >C(discounted):C(ShipCountry)</th>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col0" class="data row2 col0" >15584.9</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col1" class="data row2 col1" >20</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col2" class="data row2 col2" >2.4503</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col3" class="data row2 col3" >0.00061</td>
+            </tr>
+            <tr>
+                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row3" class="row_heading level0 row3" >Residual</th>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col0" class="data row3 col0" >672930</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col1" class="data row3 col1" >2116</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col2" class="data row3 col2" >nan</td>
+                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col3" class="data row3 col3" >nan</td>
+            </tr>
+    </tbody></table>
+
+
+
+
+```python
+# calculate ttest_ind p-values and significance for individual countries
+print(f"\n Countries with p-values < 0.05 - Null Hypothesis Rejected:")
+for k,v in countries.items():
+    try:
+        grp0 = df_countries.loc[v].groupby('discounted').get_group(0)['Quantity']
+        grp1 = df_countries.loc[v].groupby('discounted').get_group(1)['Quantity']
+        result = stat.ttest_ind(grp0,grp1)
+        if result[1] < 0.05:
+            
+            print(f"\n\t{k}: {result[1].round(4)}")
+        else:
+            continue
+    except:
+        None 
+```
+
+    
+     Countries with p-values < 0.05 - Null Hypothesis Rejected:
+    
+    	Canada: 0.001
+    
+    	Spain: 0.0025
+    
+    	UK: 0.0003
+    
+    	USA: 0.0199
+
+
 Although discount does not have a significant effect on countries overall (p = 0.99), there is a statistically significant relationship between order quantities and discount in some of the countries (p=0.0006).
 
-According to the SEM bar plots and ttest statistics above, countries showing a preference for discount include:
-* Spain
-* UK
-* Canada
-* USA
+Countries with p-values < 0.05 - Null Hypothesis Rejected:
+
+	Canada: 0.001
+
+	Spain: 0.0025
+
+	UK: 0.0003
+
+	USA: 0.0199
+
+
+```python
+y1 = df_countries.groupby('discounted').get_group(1)['Quantity']
+
+
+fig = plt.figure(figsize=(18,12))
+ax = fig.gca()
+
+ax = sns.barplot(x='ShipCountry', y=y1, data=df_countries)
+
+ax.set_title('Average Discount Order Quantity by Country', fontdict={'family': 'PT Mono', 'size':16})
+```
+
+
+
+
+    Text(0.5, 1.0, 'Average Discount Order Quantity by Country')
+
+
+
+
+![png](output_82_1.png)
+
 
 ### Effect Size
 
@@ -2728,12 +2923,55 @@ Effect size testing is unnecessary since the null hypothesis for the main questi
 
 
 ```python
-# Part 2: To what extent (percentage difference) do countries order discount vs full price
-discountry_df = df_countries[df_countries.ShipCountry.isin(['Spain','UK','USA','Canada'])]
-discountry_df.head()
+#!pip install pandasql
+from pandasql import sqldf
+pysqldf = lambda q: sqldf(q, globals())
 ```
 
 
+```python
+# Compare number of discount vs fullprice orders by country.
+# Create bar plots grouped as discount vs fullprice orders by country
+#fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(18,8))
+
+q1 = "SELECT ShipCountry, AVG(Quantity) as OrderQty from df_countries where discounted = 0 group by 1;"
+q2 = "SELECT ShipCountry, AVG(Quantity) as OrderQty from df_countries where discounted = 1 group by 1;"
+
+df_fpCount = pysqldf(q1)
+df_dcCount = pysqldf(q2)
+
+df_fpCount['Group'] = 'FullPrice'
+df_dcCount['Group'] = 'Discount'
+
+df_country_qty = pd.concat([df_fpCount, df_dcCount], axis=0)
+
+display(df_country_qty.describe())
+
+#ax = sns.barplot(x='ShipCountry', y='NumOrders', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax.set_title('Number of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+#ax1 = sns.barplot(x='ShipCountry', y='TotalQty', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax1.set_title('Total Qty of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+sns.set_style("whitegrid")
+fig = plt.figure(figsize=(18,8))
+ax = fig.gca(title="Average Order Quantity by Country: Fullprice vs Discount")
+
+sns.barplot(x='ShipCountry', y='OrderQty', ax=ax, data=df_country_qty, hue='Group', 
+            palette='pastel', orient='v', ci=68, capsize=.2)
+
+## Set Title,X/Y Labels,fonts,formatting
+ax_font = {'family':'monospace','weight':'semibold','size':14}
+tick_font = {'size':12,'ha':'center','rotation':45}
+t_label = "Average Order Quantity by Country: Fullprice vs Discount Orders"
+t_font = {'family': 'PT Mono', 'size':18}
+
+ax.set_ylabel("Order Qty", fontdict=ax_font)
+ax.set_xlabel("Country", fontdict=ax_font)
+#ax.set_title('Average Order Quantity by Country: Fullprice vs Discount', fontdict={'family': 'PT Mono', 'size':16})
+ax.set_title(t_label, fontdict=t_font)
+
+```
 
 
 <div>
@@ -2754,271 +2992,343 @@ discountry_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Id</th>
-      <th>OrderId</th>
-      <th>ProductId</th>
-      <th>UnitPrice</th>
-      <th>Quantity</th>
-      <th>Discount</th>
-      <th>discounted</th>
-      <th>OQD</th>
-      <th>CustomerId</th>
-      <th>EmployeeId</th>
-      <th>...</th>
-      <th>RequiredDate</th>
-      <th>ShippedDate</th>
-      <th>ShipVia</th>
-      <th>Freight</th>
-      <th>ShipName</th>
-      <th>ShipAddress</th>
-      <th>ShipCity</th>
-      <th>ShipRegion</th>
-      <th>ShipPostalCode</th>
-      <th>ShipCountry</th>
+      <th>OrderQty</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>40</td>
-      <td>10262/5</td>
-      <td>10262</td>
-      <td>5</td>
-      <td>17.0</td>
-      <td>12</td>
-      <td>0.20</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>RATTC</td>
-      <td>8</td>
-      <td>...</td>
-      <td>2012-08-19</td>
-      <td>2012-07-25</td>
-      <td>3</td>
-      <td>48.29</td>
-      <td>Rattlesnake Canyon Grocery</td>
-      <td>2817 Milton Dr.</td>
-      <td>Albuquerque</td>
-      <td>North America</td>
-      <td>87110</td>
-      <td>USA</td>
+      <td>count</td>
+      <td>39.000000</td>
     </tr>
     <tr>
-      <td>41</td>
-      <td>10262/7</td>
-      <td>10262</td>
-      <td>7</td>
-      <td>24.0</td>
-      <td>15</td>
-      <td>0.00</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>RATTC</td>
-      <td>8</td>
-      <td>...</td>
-      <td>2012-08-19</td>
-      <td>2012-07-25</td>
-      <td>3</td>
-      <td>48.29</td>
-      <td>Rattlesnake Canyon Grocery</td>
-      <td>2817 Milton Dr.</td>
-      <td>Albuquerque</td>
-      <td>North America</td>
-      <td>87110</td>
-      <td>USA</td>
+      <td>mean</td>
+      <td>22.596281</td>
     </tr>
     <tr>
-      <td>42</td>
-      <td>10262/56</td>
-      <td>10262</td>
-      <td>56</td>
-      <td>30.4</td>
-      <td>2</td>
-      <td>0.00</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>RATTC</td>
-      <td>8</td>
-      <td>...</td>
-      <td>2012-08-19</td>
-      <td>2012-07-25</td>
-      <td>3</td>
-      <td>48.29</td>
-      <td>Rattlesnake Canyon Grocery</td>
-      <td>2817 Milton Dr.</td>
-      <td>Albuquerque</td>
-      <td>North America</td>
-      <td>87110</td>
-      <td>USA</td>
+      <td>std</td>
+      <td>7.620086</td>
     </tr>
     <tr>
-      <td>57</td>
-      <td>10269/33</td>
-      <td>10269</td>
-      <td>33</td>
-      <td>2.0</td>
-      <td>60</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>WHITC</td>
-      <td>5</td>
-      <td>...</td>
-      <td>2012-08-14</td>
-      <td>2012-08-09</td>
-      <td>1</td>
-      <td>4.56</td>
-      <td>White Clover Markets</td>
-      <td>1029 - 12th Ave. S.</td>
-      <td>Seattle</td>
-      <td>North America</td>
-      <td>98124</td>
-      <td>USA</td>
+      <td>min</td>
+      <td>9.970588</td>
     </tr>
     <tr>
-      <td>58</td>
-      <td>10269/72</td>
-      <td>10269</td>
-      <td>72</td>
-      <td>27.8</td>
-      <td>20</td>
-      <td>0.05</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>WHITC</td>
-      <td>5</td>
-      <td>...</td>
-      <td>2012-08-14</td>
-      <td>2012-08-09</td>
-      <td>1</td>
-      <td>4.56</td>
-      <td>White Clover Markets</td>
-      <td>1029 - 12th Ave. S.</td>
-      <td>Seattle</td>
-      <td>North America</td>
-      <td>98124</td>
-      <td>USA</td>
+      <td>25%</td>
+      <td>17.458458</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>21.750000</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>25.985539</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>43.172414</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 21 columns</p>
 </div>
 
 
 
 
-```python
-#!pip install pandasql
-from pandasql import sqldf
-pysqldf = lambda q: sqldf(q, globals())
-```
+
+    Text(0.5, 1.0, 'Average Order Quantity by Country: Fullprice vs Discount Orders')
 
 
-```python
-# Plot comparison of discount orders vs fullprice orders for each country where a significant difference exists.
-#Spain
-q0 = "SELECT ShipCountry, Count(*) from discountry_df where discounted = 0 group by 1;"
-q1 = "SELECT ShipCountry, Count(*) from discountry_df where discounted = 1 group by 1;"
-
-fullprice_df = pysqldf(q0)
-discount_df = pysqldf(q1)
-
-# Create histograms for each query group
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,8), sharex=True)
-
-ax0 = axes[0]
-fullprice_df.set_index('ShipCountry')['Count(*)'].plot(kind='barh', ax=ax0, color='purple')
-ax0.set_title('Distribution of Full Price Orders')
-
-ax1 = axes[1]
-discount_df.set_index('ShipCountry')['Count(*)'].plot(kind='barh', ax=ax1, color='green')
-ax1.set_title('Distribution of Discount Orders')
-plt.show()
-```
 
 
-![png](output_84_0.png)
+![png](output_87_2.png)
 
 
 According to the plot above, the actual number of discounted orders is lower than the number of full price orders. Let's compare the sum of quantities for these orders in each group.
 
 
 ```python
-# Plot comparison of discount orders vs fullprice orders for each country where a significant difference exists.
-#Spain
-q0 = "SELECT ShipCountry, SUM(Quantity) from discountry_df where discounted = 0 group by 1;"
-q1 = "SELECT ShipCountry, SUM(Quantity) from discountry_df where discounted = 1 group by 1;"
+# Compare number of discount vs fullprice orders by country.
+# Create bar plots grouped as discount vs fullprice orders by country
+#fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(18,8))
 
-fullprice_df = pysqldf(q0)
-discount_df = pysqldf(q1)
+q1 = "SELECT ShipCountry, Count(*) as OrderCount from df_countries where discounted = 0 group by 1;"
+q2 = "SELECT ShipCountry, Count(*) as OrderCount from df_countries where discounted = 1 group by 1;"
 
-# Create histograms for each query group
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,8), sharex=True)
+df_fpCount = pysqldf(q1)
+df_dcCount = pysqldf(q2)
 
-ax0 = axes[0]
-fullprice_df.set_index('ShipCountry')['SUM(Quantity)'].plot(kind='barh', ax=ax0, color='purple')
-ax0.set_title('Distribution of Full Price Quantity')
+df_fpCount['Group'] = 'FullPrice'
+df_dcCount['Group'] = 'Discount'
 
-ax1 = axes[1]
-discount_df.set_index('ShipCountry')['SUM(Quantity)'].plot(kind='barh', ax=ax1, color='green')
-ax1.set_title('Distribution of Discount Quantity')
-plt.show()
+df_country_count = pd.concat([df_fpCount, df_dcCount], axis=0)
+
+display(df_country_count.describe())
+
+#ax = sns.barplot(x='ShipCountry', y='NumOrders', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax.set_title('Number of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+#ax1 = sns.barplot(x='ShipCountry', y='TotalQty', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax1.set_title('Total Qty of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+
+fig = plt.figure(figsize=(18,8))
+ax = fig.gca(title="Mean QPO by Country")
+
+sns.barplot(x='ShipCountry', y='OrderCount', ax=ax, data=df_country_count, hue='Group', palette='Reds_d', 
+            orient='v', ci=68, capsize=.2)
+
+## Set Title,X/Y Labels,fonts,formatting
+ax_font = {'family':'monospace','weight':'semibold','size':14}
+tick_font = {'size':12,'ha':'center','rotation':45}
+t_label = "Count of Fullprice vs Discount Orders by Country"
+t_font = {'family': 'PT Mono', 'size':18}
+
+ax.set_ylabel("Number of Orders", fontdict=ax_font)
+ax.set_xlabel("Country", fontdict=ax_font)
+#ax.set_title('Average Order Quantity by Country: Fullprice vs Discount', fontdict={'family': 'PT Mono', 'size':16})
+ax.set_title(t_label, fontdict=t_font)
+
 ```
 
 
-![png](output_86_0.png)
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderCount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>55.256410</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>48.722478</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>8.000000</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>22.000000</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>69.500000</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>210.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+    Text(0.5, 1.0, 'Count of Fullprice vs Discount Orders by Country')
+
+
+
+
+![png](output_89_2.png)
 
 
 This still doesn't tell us much about whether or not these countries prefer discounts (tend to order more products) or not - in order to get better insight, we need to look at the average order size (mean quantities per order) for each group.
 
 
 ```python
-# Plot comparison of discount orders vs fullprice orders for each country where a significant difference exists.
-#Spain
-q0 = "SELECT ShipCountry, AVG(Quantity) from discountry_df where discounted = 0 group by 1;"
-q1 = "SELECT ShipCountry, AVG(Quantity) from discountry_df where discounted = 1 group by 1;"
+# Compare number of discount vs fullprice orders by country.
+# Create bar plots grouped as discount vs fullprice orders by country
+#fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(18,8))
 
-fullprice_df = pysqldf(q0)
-discount_df = pysqldf(q1)
+#q1 = "SELECT ShipCountry, Count(*) as NumOrders, SUM(Quantity) as TotalQty, AVG(Quantity) as MeanQPO from df_countries where discounted = 0 group by 1;"
+#q2 = "SELECT ShipCountry, Count(*) as NumOrders, SUM(Quantity) as TotalQty, AVG(Quantity) as MeanQPO from df_countries where discounted = 1 group by 1;"
 
-# Create histograms for each query group
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(18,8), sharex=True)
+q1 = "SELECT ShipCountry, AVG(Quantity) as MeanQPO from df_countries where discounted = 0 group by 1;"
+q2 = "SELECT ShipCountry, AVG(Quantity) as MeanQPO from df_countries where discounted = 1 group by 1;"
 
-ax0 = axes[0]
-fullprice_df.set_index('ShipCountry')['AVG(Quantity)'].plot(kind='barh', ax=ax0, color='purple')
-ax0.set_title('Distribution of Full Price Quantity')
+fullprice_df = pysqldf(q1)
+discount_df = pysqldf(q2)
 
-ax1 = axes[1]
-discount_df.set_index('ShipCountry')['AVG(Quantity)'].plot(kind='barh', ax=ax1, color='green')
-ax1.set_title('Distribution of Discount Quantity')
-plt.show()
+fullprice_df['Group'] = 'FullPrice'
+discount_df['Group'] = 'Discount'
+
+country_df = pd.concat([fullprice_df, discount_df], axis=0)
+
+display(country_df.describe())
+
+#ax = sns.barplot(x='ShipCountry', y='NumOrders', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax.set_title('Number of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+#ax1 = sns.barplot(x='ShipCountry', y='TotalQty', data=country_df, hue='Group', palette='pastel', orient='v')
+#ax1.set_title('Total Qty of Fullprice vs Discount Orders by Country', fontdict={'family': 'monospace', 'size':16})
+
+
+fig = plt.figure(figsize=(18,8))
+ax = fig.gca(title="Mean QPO by Country")
+
+sns.barplot(x='ShipCountry', y='MeanQPO', ax=ax, data=country_df, hue='Group', palette='Greens_d', 
+            orient='v', capsize=.2)
+
+## Set Title,X/Y Labels,fonts,formatting
+ax_font = {'family':'monospace','weight':'semibold','size':14}
+tick_font = {'size':12,'ha':'center','rotation':45}
+t_label = "Average Order Quantity by Country: Fullprice vs Discount"
+t_font = {'family': 'PT Mono', 'size':18}
+
+ax.set_ylabel("Avg Qty per Order ", fontdict=ax_font)
+ax.set_xlabel("Country", fontdict=ax_font)
+#ax.set_title('Average Order Quantity by Country: Fullprice vs Discount', fontdict={'family': 'PT Mono', 'size':16})
+ax.set_title(t_label, fontdict=t_font)
+
 ```
 
 
-![png](output_88_0.png)
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MeanQPO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>39.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>22.596281</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>7.620086</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>9.970588</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>17.458458</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>21.750000</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>25.985539</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>43.172414</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
-The above plots indicate that when a discount is offered, these individual countries do in fact tend to order higher quantities of products. Let's look at the values to determine what percentage more they purchase when an order is discounted.
+
+
+
+    Text(0.5, 1.0, 'Average Order Quantity by Country: Fullprice vs Discount')
+
+
+
+
+![png](output_91_2.png)
+
+
+The above plots indicate that when a discount is offered, certain countries order higher quantities of products. Let's look at the values to determine what percentage more they purchase when an order is discounted.
 
 
 ```python
-q0 = "SELECT ShipCountry, AVG(Quantity) as fpmean_qty from discountry_df where discounted = 0 group by 1;"
-q1 = "SELECT ShipCountry, AVG(Quantity) as dcmean_qty from discountry_df where discounted = 1 group by 1;"
-q3 = "SELECT ShipCountry, AVG(Quantity) as mean_qty from discountry_df group by 1;"
+# add new col for countries where discount has significant effect
+fig = plt.figure(figsize=(18,12))
+ax = fig.gca()
+df_countries['effect_cqd'] = df_countries['ShipCountry'].isin(['Spain', 'UK', 'USA', 'Canada'])
+ax = sns.barplot(x='ShipCountry', y='Quantity', hue='effect_cqd', palette='pastel', data=df_countries)
 
-
-
-fp = pysqldf(q0)
-dc = pysqldf(q1)
-mean_qty = pysqldf(q3)
-
-country_mean_qty = fp
-country_mean_qty['dcmean_qty'] = dc['dcmean_qty']
-
-country_mean_qty['mean_diff'] = country_mean_qty.dcmean_qty - country_mean_qty.fpmean_qty
-country_mean_qty['mean_qty'] = mean_qty['mean_qty']
-
-#display(pysqldf(q0), pysqldf(q1))
 ```
+
+
+![png](output_93_0.png)
+
+
+
+```python
+q1 = "SELECT ShipCountry, Count(*) as OrderCount from df_countries where discounted = 0 group by 1;"
+q2 = "SELECT ShipCountry, Count(*) as OrderCount from df_countries where discounted = 1 group by 1;"
+
+df_fpCount = pysqldf(q1)
+df_dcCount = pysqldf(q2)
+
+df_fpCount['Group'] = 'FullPrice'
+df_dcCount['Group'] = 'Discount'
+
+df_countryCount = pd.concat([df_fpCount, df_dcCount])
+
+fig = plt.figure(figsize=(18,8))
+ax = fig.gca(title="Average Order Quantity by Country")
+
+ax = sns.barplot(x='ShipCountry', y='OrderCount', data=df_countryCount)
+ax.set_title('Order Count by Country', fontdict={'family': 'PT Mono', 'size':16})
+```
+
+
+
+
+    Text(0.5, 1.0, 'Order Count by Country')
+
+
+
+
+![png](output_94_1.png)
+
 
 
 ```python
@@ -3094,15 +3404,17 @@ country_mean_qty
 
 ## Results
 
-At alpha = 0.05 significance level, countries overall have no relationship with order quantity for discount vs full price and the null hypothesis is not rejected.
-
-However, for certain individual countries (Spain, Canada, UK, USA), the null hypothesis is rejected with p-values below 0.05.
+For certain individual countries (Spain, Canada, UK, USA), the null hypothesis is rejected with 95% certainty (alpha=0.05) 
 
 # H3: Region & Revenue
 
 **Does average revenue per order vary between different customer regions?**
 
 **If so, how do the regions rank in terms of average revenue per order?**
+
+*Additional questions to explore:*
+**Does geographic distance between distributor and shipcountry have an effect on order quantity?**
+**Does shipping cost have an effect on order quantity?**
 
 ## Hypotheses
 
@@ -3447,16 +3759,23 @@ df_region.groupby('Region').count()
 
 
 ```python
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca()
+
+sns.distplot(grp0)
+sns.distplot(grp1)
+ax.legend(['Full Price','Discounted'])
+
 # Plot number of orders, total revenue, and average revenue per order by region
 fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8,8))
 # Number of orders
-df_region.groupby(['Region'])['Revenue'].count().plot(kind='barh', ax=ax1)
+df_region.groupby(['Region'])['Revenue'].count().plot(kind='barh', ax=ax1, color='b')
 
 # Total Revenue
-df_region.groupby(['Region'])['Revenue'].sum().plot(kind='barh', ax=ax2)
+df_region.groupby(['Region'])['Revenue'].sum().plot(kind='barh', ax=ax2, color='r')
 
 # Average Revenue
-df_region.groupby(['Region'])['Revenue'].mean().plot(kind='barh', ax=ax3)
+df_region.groupby(['Region'])['Revenue'].mean().plot(kind='barh', ax=ax3, color='g')
 
 # Label plots and axes
 ax1.set_title('Total Orders')
@@ -3470,42 +3789,47 @@ fig.subplots_adjust(hspace=0.4);
 ```
 
 
-![png](output_107_0.png)
+![png](output_111_0.png)
 
+
+
+![png](output_111_1.png)
+
+
+The graphs show that Western Europe is the region with the greatest number of orders, and also has the greatest total revenue. However, North America has the most expensive order on average (followed by Western Europe). Southern and Eastern Europe has the lowest number of orders, lowest total revenue, and cheapest order on average. The third graph lent support to the alternate hypothesis that there are significant differences in average order revenue between regions. 
 
 ## Test
 
 ### Sample Size
+Check if sample sizes allow us to ignore assumptions of normality
 
 
 ```python
-# Check if sample sizes allow us to ignore assumptions;
-# visualize sample size comparisons 
-
-regions = ['Western Europe', 'Southern Europe', 'North Europe', 'South Americas', 'North America', 'British Isles']
+# visualize sample size comparisons, check normality (pvals)
 fig = plt.figure(figsize=(12,6))
-for region in regions:
-    grp = df_region.groupby('Region').get_group(region)['Revenue']
-    plt.bar(x=region, height=grp.mean(), yerr=stat.sem(grp))
-    print(stat.normaltest(grp))
-plt.show()
+ax = fig.gca()
+
+ax = sns.barplot(x='Region', y='Revenue', data=df_region, ci=68, palette="pastel", hue='Region')
+ax.set_title('Average Order Revenue by Region', fontdict={'family': 'PT Mono', 'size':16})
 ```
 
-    NormaltestResult(statistic=339.9576854638769, pvalue=1.5105202827923603e-74)
-    NormaltestResult(statistic=43.81961700014593, pvalue=3.0527487976334264e-10)
-    NormaltestResult(statistic=77.63787783979987, pvalue=1.3840412490785474e-17)
-    NormaltestResult(statistic=311.45736288265334, pvalue=2.3328830945007275e-68)
-    NormaltestResult(statistic=136.230976580461, pvalue=2.617093889288348e-30)
-    NormaltestResult(statistic=105.41475929189932, pvalue=1.286695743223332e-23)
 
 
 
-![png](output_110_1.png)
+    Text(0.5, 1.0, 'Average Order Revenue by Region')
+
+
+
+
+![png](output_115_1.png)
 
 
 ### Normality
 
-The graphs show that Western Europe is the region with the greatest number of orders, and also has the greatest total revenue. However, North America has the most expensive order on average (followed by Western Europe). Southern and Eastern Europe has the lowest number of orders, lowest total revenue, and cheapest order on average. The third graph lent support to the alternate hypothesis that there are significant differences in average order revenue between regions. 
+
+```python
+
+```
 
 ### Statistical
 
@@ -3523,27 +3847,27 @@ anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 
 
 <style  type="text/css" >
-</style><table id="T_4b875964_2437_11ea_a8dd_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+</style><table id="T_ac06538c_26b0_11ea_ba20_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_4b875964_2437_11ea_a8dd_f40f2405a054level0_row0" class="row_heading level0 row0" >C(Region)</th>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row0_col0" class="data row0 col0" >1.03486e+07</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row0_col1" class="data row0 col1" >5</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row0_col2" class="data row0 col2" >3.98262e+30</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
+                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row0" class="row_heading level0 row0" >C(Region)</th>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col0" class="data row0 col0" >1.03486e+07</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col1" class="data row0 col1" >5</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col2" class="data row0 col2" >3.98262e+30</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_4b875964_2437_11ea_a8dd_f40f2405a054level0_row1" class="row_heading level0 row1" >Revenue:C(Region)</th>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row1_col0" class="data row1 col0" >5.34162e+08</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row1_col1" class="data row1 col1" >6</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row1_col2" class="data row1 col2" >1.71309e+32</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row1" class="row_heading level0 row1" >Revenue:C(Region)</th>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col0" class="data row1 col0" >5.34162e+08</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col1" class="data row1 col1" >6</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col2" class="data row1 col2" >1.71309e+32</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_4b875964_2437_11ea_a8dd_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row2_col0" class="data row2 col0" >4.10034e-22</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row2_col1" class="data row2 col1" >789</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
-                        <td id="T_4b875964_2437_11ea_a8dd_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
+                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col0" class="data row2 col0" >4.10034e-22</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col1" class="data row2 col1" >789</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
+                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
             </tr>
     </tbody></table>
 
@@ -3750,15 +4074,110 @@ tukey_OQD
 
 
 
+North America and Southern Europe:  pval = 0.01, mean diff: -388.24
+
+Southern Europe and Western Europe: pval = 0.02, mean diff: 353.4704
+
+### Effect Size
+
+Cohen's D
+
 
 ```python
-fig
+northamerica = df_region.loc[df_region['Region'] == 'North America']
+southerneurope = df_region.loc[df_region['Region'] == 'Southern Europe']
+westerneurope = df_region.loc[df_region['Region'] == 'Western Europe']
+
+na_se = Cohen_d(northamerica.Revenue, southerneurope.Revenue)
+se_we = Cohen_d(southerneurope.Revenue, westerneurope.Revenue)
+
+print(na_se, se_we)
+```
+
+    0.5891669383438923 -0.5462384714677272
+
+
+## Post-Hoc Tests
+
+
+```python
+# log-transforming revenue per order
+logRegion_df = df_region.copy()
+logRegion_df['Revenue'] = np.log(df_region['Revenue'])
+
+# Plotting the distributions for the log-transformed data
+sns.set_style("whitegrid")
+
+fig = plt.figure(figsize=(12,8))
+ax = fig.gca(title="Distribution of Revenue Per Order by Region")
+
+for region in set(logRegion_df.Region):
+    region_group = logRegion_df.loc[logRegion_df['Region'] == region]
+    sns.distplot(region_group['Revenue'], hist_kws=dict(alpha=0.5), label=region)
+    ax.legend()
+    ax.set_label('Revenue per Order (log-transformed)')
+```
+
+
+![png](output_125_0.png)
+
+
+
+```python
+# The data is more normally distributed, and variances from the mean were more similar. 
+# run an ANOVA test:
+
+# Fitting a model of revenue per order on Region categories - ANOVA table
+lm = ols('Revenue ~ C(Region)', logRegion_df).fit()
+sm.stats.anova_lm(lm, typ=2)
+
 ```
 
 
 
 
-![png](output_116_0.png)
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum_sq</th>
+      <th>df</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C(Region)</td>
+      <td>48.004167</td>
+      <td>5.0</td>
+      <td>12.076998</td>
+      <td>2.713885e-11</td>
+    </tr>
+    <tr>
+      <td>Residual</td>
+      <td>631.999979</td>
+      <td>795.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 
 
@@ -3766,10 +4185,29 @@ fig
 
 At an alpha level of 0.05 significance, revenue does vary between regions and therefore the null hypothesis is rejected.
 
-# H4: Season--Quantity
-**Does average quantity per order vary by season / time of year?**
 
-**If so, which months?**
+
+The ANOVA table above revealed that the p-value is lower than the alpha value of 0.05. Therefore I was able to reject the null hypothesis and accept the alternate hypothesis. There are statistically significant differences in average order value between different regions, i.e. customers from different parts of the world spend different amounts of money on their orders, on average.
+Conclusions
+Business insights:
+There are statistically significant differences in the average revenue per order from customers from different regions.
+Western European customers place the most orders, and are the single biggest contributors to Northwind’s bottom line. However, although North American customers have placed roughly half as many orders as those from Western Europe, they spend more per order, on average.
+The difference between the region with the most expensive orders on average (North America, $1,945.93) and the region with the least expensive orders (Southern and Eastern Europe, $686.73) is $1,259.20, or 2.8 times more for orders from North America.
+Southern and Eastern Europe has the smallest number of orders, the lowest total revenue, and the lowest average revenue per order.
+North American customers have placed a similar number of orders to those from South and Central America, but their average expenditure per order is 1.8 times higher.
+Potential business actions and directions for future work:
+If Northwind was looking to focus on more profitable customers, a potential action would be to stop serving customers in Southern and Eastern Europe, and to focus more on customers in Western Europe and North America.
+However, further analysis would be needed to confirm these findings. For example, it might be the case that some more expensive products are only available in certain regions.
+
+---
+
+# H4: Season+Quantity:ProductCategory
+
+1: **Does time of year (month) have an effect on order quantity overall?**
+
+2: **Does time of year (month) have an effect on order quantity of specific product categories?**
+
+3: **Does time of year (month) have an effect on order quantity by region?**
 
 ## Hypotheses
     
@@ -3778,16 +4216,16 @@ At an alpha level of 0.05 significance, revenue does vary between regions and th
 * $𝐻_0$ : Time of year has no relationship with average quantity per order.
 
 ## EDA
-Select the proper dataset for analysis, perform EDA, and generate data groups for testing.
-
-       * group by month: determine mean number of orders, mean order quantity 
+- Select proper dataset for analysis: orderDetail, order
+- Generate data groups for testing: number of orders per month, order quantity per month
+- Explore data (sample sizes, distribution/density)
 
 ### Select
 
 
 ```python
-df_month = df_orderDetail.merge(df_order, on='OrderId', copy=True)
-df_month.head()
+df_months = df_orderDetail.merge(df_order, on='OrderId', copy=True)
+df_months.head()
 ```
 
 
@@ -3818,10 +4256,9 @@ df_month.head()
       <th>Quantity</th>
       <th>Discount</th>
       <th>discounted</th>
-      <th>OQD</th>
       <th>CustomerId</th>
       <th>EmployeeId</th>
-      <th>...</th>
+      <th>OrderDate</th>
       <th>RequiredDate</th>
       <th>ShippedDate</th>
       <th>ShipVia</th>
@@ -3844,10 +4281,9 @@ df_month.head()
       <td>12</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
-      <td>...</td>
+      <td>2012-07-04</td>
       <td>2012-08-01</td>
       <td>2012-07-16</td>
       <td>3</td>
@@ -3868,10 +4304,9 @@ df_month.head()
       <td>10</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
-      <td>...</td>
+      <td>2012-07-04</td>
       <td>2012-08-01</td>
       <td>2012-07-16</td>
       <td>3</td>
@@ -3892,10 +4327,9 @@ df_month.head()
       <td>5</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
-      <td>...</td>
+      <td>2012-07-04</td>
       <td>2012-08-01</td>
       <td>2012-07-16</td>
       <td>3</td>
@@ -3916,10 +4350,9 @@ df_month.head()
       <td>9</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>TOMSP</td>
       <td>6</td>
-      <td>...</td>
+      <td>2012-07-05</td>
       <td>2012-08-16</td>
       <td>2012-07-10</td>
       <td>1</td>
@@ -3940,10 +4373,9 @@ df_month.head()
       <td>40</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>TOMSP</td>
       <td>6</td>
-      <td>...</td>
+      <td>2012-07-05</td>
       <td>2012-08-16</td>
       <td>2012-07-10</td>
       <td>1</td>
@@ -3957,14 +4389,13 @@ df_month.head()
     </tr>
   </tbody>
 </table>
-<p>5 rows × 21 columns</p>
 </div>
 
 
 
 
 ```python
-pd.to_datetime(df_month['OrderDate']).head()
+pd.to_datetime(df_months['OrderDate'], format='%Y/%m/%d').head()
 ```
 
 
@@ -3981,26 +4412,9 @@ pd.to_datetime(df_month['OrderDate']).head()
 
 
 ```python
-pd.to_datetime(df_month['OrderDate'], format='%Y/%m/%d').head()
-```
-
-
-
-
-    0   2012-07-04
-    1   2012-07-04
-    2   2012-07-04
-    3   2012-07-05
-    4   2012-07-05
-    Name: OrderDate, dtype: datetime64[ns]
-
-
-
-
-```python
-df_month['OrderMonth'] = pd.DatetimeIndex(df_month['OrderDate']).month
-df_month['OrderYear'] = pd.DatetimeIndex(df_month['OrderDate']).year
-df_month.head()
+df_months['OrderMonth'] = pd.DatetimeIndex(df_months['OrderDate']).month
+df_months['OrderYear'] = pd.DatetimeIndex(df_months['OrderDate']).year
+df_months.head()
 ```
 
 
@@ -4031,9 +4445,9 @@ df_month.head()
       <th>Quantity</th>
       <th>Discount</th>
       <th>discounted</th>
-      <th>OQD</th>
       <th>CustomerId</th>
       <th>EmployeeId</th>
+      <th>OrderDate</th>
       <th>...</th>
       <th>ShipVia</th>
       <th>Freight</th>
@@ -4057,9 +4471,9 @@ df_month.head()
       <td>12</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
+      <td>2012-07-04</td>
       <td>...</td>
       <td>3</td>
       <td>32.38</td>
@@ -4081,9 +4495,9 @@ df_month.head()
       <td>10</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
+      <td>2012-07-04</td>
       <td>...</td>
       <td>3</td>
       <td>32.38</td>
@@ -4105,9 +4519,9 @@ df_month.head()
       <td>5</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>VINET</td>
       <td>5</td>
+      <td>2012-07-04</td>
       <td>...</td>
       <td>3</td>
       <td>32.38</td>
@@ -4129,9 +4543,9 @@ df_month.head()
       <td>9</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>TOMSP</td>
       <td>6</td>
+      <td>2012-07-05</td>
       <td>...</td>
       <td>1</td>
       <td>11.61</td>
@@ -4153,9 +4567,9 @@ df_month.head()
       <td>40</td>
       <td>0.0</td>
       <td>0</td>
-      <td>0.0</td>
       <td>TOMSP</td>
       <td>6</td>
+      <td>2012-07-05</td>
       <td>...</td>
       <td>1</td>
       <td>11.61</td>
@@ -4170,38 +4584,15 @@ df_month.head()
     </tr>
   </tbody>
 </table>
-<p>5 rows × 23 columns</p>
+<p>5 rows × 22 columns</p>
 </div>
 
 
 
-### Group
-
 
 ```python
-mqpo_m = df_month.groupby('OrderMonth')['Quantity'].mean()
-```
-
-
-```python
-# plot average order quantities by month
-for k,v in mqpo_m.items():
-    plt.bar(x=k, height=v)
-```
-
-
-![png](output_129_0.png)
-
-
-### Group
-
-
-```python
-# create seasonal-based dataframe with only columns we need
-#keep_cols = ['OrderId', 'ProductId', 'UnitPrice', 'Quantity', 'ShipCountry', 'OrderMonth', 'OrderYear', 'Season']
-drop_cols = ['Id', 'discounted', 'OQD', 'CustomerId', 'EmployeeId', 'Freight', 'OrderDate', 'RequiredDate', 'ShippedDate', 'ShipVia', 'ShipName', 'ShipAddress', 'ShipCity', 'ShipRegion', 'ShipPostalCode']
-df_month.drop(drop_cols, axis=1, inplace=True)
-df_month.head()
+df_months.set_index('OrderDate', inplace=True)
+df_months.head()
 ```
 
 
@@ -4225,68 +4616,294 @@ df_month.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Id</th>
       <th>OrderId</th>
       <th>ProductId</th>
       <th>UnitPrice</th>
       <th>Quantity</th>
       <th>Discount</th>
+      <th>discounted</th>
+      <th>CustomerId</th>
+      <th>EmployeeId</th>
+      <th>RequiredDate</th>
+      <th>...</th>
+      <th>ShipVia</th>
+      <th>Freight</th>
+      <th>ShipName</th>
+      <th>ShipAddress</th>
+      <th>ShipCity</th>
+      <th>ShipRegion</th>
+      <th>ShipPostalCode</th>
       <th>ShipCountry</th>
       <th>OrderMonth</th>
       <th>OrderYear</th>
     </tr>
+    <tr>
+      <th>OrderDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <td>0</td>
+      <td>2012-07-04</td>
+      <td>10248/11</td>
       <td>10248</td>
       <td>11</td>
       <td>14.0</td>
       <td>12</td>
       <td>0.0</td>
+      <td>0</td>
+      <td>VINET</td>
+      <td>5</td>
+      <td>2012-08-01</td>
+      <td>...</td>
+      <td>3</td>
+      <td>32.38</td>
+      <td>Vins et alcools Chevalier</td>
+      <td>59 rue de l'Abbaye</td>
+      <td>Reims</td>
+      <td>Western Europe</td>
+      <td>51100</td>
       <td>France</td>
       <td>7</td>
       <td>2012</td>
     </tr>
     <tr>
-      <td>1</td>
+      <td>2012-07-04</td>
+      <td>10248/42</td>
       <td>10248</td>
       <td>42</td>
       <td>9.8</td>
       <td>10</td>
       <td>0.0</td>
+      <td>0</td>
+      <td>VINET</td>
+      <td>5</td>
+      <td>2012-08-01</td>
+      <td>...</td>
+      <td>3</td>
+      <td>32.38</td>
+      <td>Vins et alcools Chevalier</td>
+      <td>59 rue de l'Abbaye</td>
+      <td>Reims</td>
+      <td>Western Europe</td>
+      <td>51100</td>
       <td>France</td>
       <td>7</td>
       <td>2012</td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>2012-07-04</td>
+      <td>10248/72</td>
       <td>10248</td>
       <td>72</td>
       <td>34.8</td>
       <td>5</td>
       <td>0.0</td>
+      <td>0</td>
+      <td>VINET</td>
+      <td>5</td>
+      <td>2012-08-01</td>
+      <td>...</td>
+      <td>3</td>
+      <td>32.38</td>
+      <td>Vins et alcools Chevalier</td>
+      <td>59 rue de l'Abbaye</td>
+      <td>Reims</td>
+      <td>Western Europe</td>
+      <td>51100</td>
       <td>France</td>
       <td>7</td>
       <td>2012</td>
     </tr>
     <tr>
-      <td>3</td>
+      <td>2012-07-05</td>
+      <td>10249/14</td>
       <td>10249</td>
       <td>14</td>
       <td>18.6</td>
       <td>9</td>
       <td>0.0</td>
+      <td>0</td>
+      <td>TOMSP</td>
+      <td>6</td>
+      <td>2012-08-16</td>
+      <td>...</td>
+      <td>1</td>
+      <td>11.61</td>
+      <td>Toms Spezialitäten</td>
+      <td>Luisenstr. 48</td>
+      <td>Münster</td>
+      <td>Western Europe</td>
+      <td>44087</td>
       <td>Germany</td>
       <td>7</td>
       <td>2012</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>2012-07-05</td>
+      <td>10249/51</td>
       <td>10249</td>
       <td>51</td>
       <td>42.4</td>
       <td>40</td>
       <td>0.0</td>
+      <td>0</td>
+      <td>TOMSP</td>
+      <td>6</td>
+      <td>2012-08-16</td>
+      <td>...</td>
+      <td>1</td>
+      <td>11.61</td>
+      <td>Toms Spezialitäten</td>
+      <td>Luisenstr. 48</td>
+      <td>Münster</td>
+      <td>Western Europe</td>
+      <td>44087</td>
+      <td>Germany</td>
+      <td>7</td>
+      <td>2012</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div>
+
+
+
+### Group
+
+
+```python
+# create seasonal-based dataframe with only columns we need
+#keep_cols = ['OrderId', 'ProductId', 'UnitPrice', 'Quantity', 'ShipCountry', 'OrderMonth', 'OrderYear', 'Season']
+drop_cols = ['OrderId', 'discounted', 'CustomerId', 'EmployeeId', 'Freight', 'RequiredDate', 'ShippedDate', 'ShipVia', 'ShipName', 'ShipAddress', 'ShipCity', 'ShipPostalCode']
+df_monthly = df_months.copy()
+df_monthly.drop(drop_cols, axis=1, inplace=True)
+df_monthly.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>ProductId</th>
+      <th>UnitPrice</th>
+      <th>Quantity</th>
+      <th>Discount</th>
+      <th>ShipRegion</th>
+      <th>ShipCountry</th>
+      <th>OrderMonth</th>
+      <th>OrderYear</th>
+    </tr>
+    <tr>
+      <th>OrderDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2012-07-04</td>
+      <td>10248/11</td>
+      <td>11</td>
+      <td>14.0</td>
+      <td>12</td>
+      <td>0.0</td>
+      <td>Western Europe</td>
+      <td>France</td>
+      <td>7</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <td>2012-07-04</td>
+      <td>10248/42</td>
+      <td>42</td>
+      <td>9.8</td>
+      <td>10</td>
+      <td>0.0</td>
+      <td>Western Europe</td>
+      <td>France</td>
+      <td>7</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <td>2012-07-04</td>
+      <td>10248/72</td>
+      <td>72</td>
+      <td>34.8</td>
+      <td>5</td>
+      <td>0.0</td>
+      <td>Western Europe</td>
+      <td>France</td>
+      <td>7</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <td>2012-07-05</td>
+      <td>10249/14</td>
+      <td>14</td>
+      <td>18.6</td>
+      <td>9</td>
+      <td>0.0</td>
+      <td>Western Europe</td>
+      <td>Germany</td>
+      <td>7</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <td>2012-07-05</td>
+      <td>10249/51</td>
+      <td>51</td>
+      <td>42.4</td>
+      <td>40</td>
+      <td>0.0</td>
+      <td>Western Europe</td>
       <td>Germany</td>
       <td>7</td>
       <td>2012</td>
@@ -4299,17 +4916,10 @@ df_month.head()
 
 
 ```python
-# Add another feature to examine: revenue
-df_month['Revenue'] = df_month.UnitPrice * df_month.Quantity * (1 - df_month.Discount)
-df_month.Revenue.mean()
+meanqpo = df_monthly.groupby('OrderMonth')['Quantity'].mean()
 ```
 
-
-
-
-    587.374960324826
-
-
+### Explore
 
 ## Test
 
@@ -4317,11 +4927,31 @@ df_month.Revenue.mean()
 
 
 ```python
+sns.set_style("whitegrid")
+%config InlineBackend.figure_format='retina'
+%matplotlib inline
+
 
 # Check if sample sizes allow us to ignore assumptions;
 # visualize sample size comparisons for two groups (normality check)
+fig = plt.figure(figsize=(14,8))
+ax = fig.gca()
+ax = sns.barplot(x='OrderMonth', y='Quantity', data=df_monthly)
+ax.set_title('Monthly Order Qty', fontdict={'family': 'PT Mono', 'size':16})
+
 
 ```
+
+
+
+
+    Text(0.5, 1.0, 'Monthly Order Qty')
+
+
+
+
+![png](output_143_1.png)
+
 
 
 ```python
@@ -4329,7 +4959,7 @@ df_month.Revenue.mean()
 
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
-model = ols("Quantity~C(OrderMonth)+Quantity:C(OrderMonth)", data=df_month).fit()
+model = ols("Quantity~C(OrderMonth)+Quantity:C(OrderMonth)", data=df_monthly).fit()
 anova_table = sm.stats.anova_lm(model, typ=2)
 # reformat scientific notation of results for easier interpretation
 anova_table.style.format("{:.5f}", subset=['PR(>F)'])
@@ -4339,80 +4969,48 @@ anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 
 
 <style  type="text/css" >
-</style><table id="T_8b941706_2437_11ea_acc8_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+</style><table id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_8b941706_2437_11ea_acc8_f40f2405a054level0_row0" class="row_heading level0 row0" >C(OrderMonth)</th>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row0_col0" class="data row0 col0" >7395.98</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row0_col1" class="data row0 col1" >11</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row0_col2" class="data row0 col2" >2.94204e+29</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
+                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row0" class="row_heading level0 row0" >C(OrderMonth)</th>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col0" class="data row0 col0" >7395.98</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col1" class="data row0 col1" >11</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col2" class="data row0 col2" >2.94204e+29</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_8b941706_2437_11ea_acc8_f40f2405a054level0_row1" class="row_heading level0 row1" >Quantity:C(OrderMonth)</th>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row1_col0" class="data row1 col0" >772004</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row1_col1" class="data row1 col1" >12</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row1_col2" class="data row1 col2" >2.81504e+31</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row1" class="row_heading level0 row1" >Quantity:C(OrderMonth)</th>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col0" class="data row1 col0" >772004</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col1" class="data row1 col1" >12</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col2" class="data row1 col2" >2.81504e+31</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_8b941706_2437_11ea_acc8_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row2_col0" class="data row2 col0" >4.87009e-24</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row2_col1" class="data row2 col1" >2131</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
-                        <td id="T_8b941706_2437_11ea_acc8_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
+                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col0" class="data row2 col0" >4.87009e-24</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col1" class="data row2 col1" >2131</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
+                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
             </tr>
     </tbody></table>
 
 
 
-
-```python
-# Create keywords for .set_xticklabels()
-tick_kwds = dict(horizontalalignment='right', 
-                  fontweight='light', 
-                  fontsize='x-large',   
-                  rotation=45)
-
-ax.set_xticklabels(ax.get_xticklabels(),**tick_kwds)
-```
-
-
-
-
-    [Text(-40.0, 0, '−40'),
-     Text(-20.0, 0, '−20'),
-     Text(0.0, 0, '0'),
-     Text(20.0, 0, '20'),
-     Text(40.0, 0, '40'),
-     Text(60.0, 0, '60'),
-     Text(80.0, 0, '80'),
-     Text(100.0, 0, '100'),
-     Text(120.0, 0, '120'),
-     Text(140.0, 0, '140'),
-     Text(160.0, 0, '160')]
-
-
-
 ### Normality
-
-If you have 2-9 groups, each group should be greater than 15.
-If you have 10-12 groups, each group should be greater than 20.
-
-If the mean accurately represents the center of your distribution and your sample size is large enough, consider a parametric test because they are more powerful.
-
-If the median better represents the center of your distribution, consider the nonparametric test even when you have a large sample.
-
-Finally, if you have a very small sample size, you might be stuck using a nonparametric test.
-
-Your chance of detecting a significant effect when one exists can be very small when you have both a small sample size and you need to use a less efficient nonparametric test!
 
 ### Statistical
 
 
 ```python
+# split orders into two groups (series): discount and fullprice order quantity
+Jan = df_monthly.groupby('OrderMonth').get_group(1)['Quantity']
+
+```
+
+
+```python
 # run tukey test for OQD (Order Quantity Discount) 
-data = df_month['Quantity'].values
-labels = df_month['OrderMonth'].values
+data = df_monthly['Quantity'].values
+labels = df_monthly['OrderMonth'].values
 
 import statsmodels.api as sms
 model = sms.stats.multicomp.pairwise_tukeyhsd(data,labels)
@@ -4573,6 +5171,26 @@ tukey_OQD
 ## Results
 
 At a significance level of alpha = 0.05, we reject the null hypothesis which states there is no relationship between time of year (season) and sales revenue or volume of units sold. 
+
+# Conclusion + Strategic Recommendations
+
+- Conclusion & Strategic Recommendations
+    1. 5% is the minimum discount level needed to produce maximum results. 
+    - C: Offering discount levels < or > 5% either:
+        a) has no effect on sales revenue and is therefore pointless
+        b) increases loss in revenue despite higher order quantities that could have otherwise been achieved at only 5% discount (thereby maximizing revenue capture/minimizing loss).
+    - R: Stop offering any discount other than 5%. 
+    
+    2. Continue to offer discounts in countries where they are effective in producing significantly higher order quantities. Stop offering discounts to countries where there is no effect on order quantities in order to minimize lost revenue. 
+    
+    3. Focus sales and marketing efforts in regions that produce highest revenue; consider  
+    
+    4.  
+
+
+- Future Work
+    * A. Gather and analyze critical missing data on customer types; investigate possible relationships between customer types and product categories (i.e. do certain customer types purchase certain 
+    * C. Investigate possible relationship between regional revenues and shipping cost (i.e. is there a relationship between source (distributor) and destination (shipcountry) that might explain lower revenues in regions that are farther away in physical/geographic distance. 
 
 # Future Work
 
@@ -4906,7 +5524,7 @@ for k,v in rev_per_cat.items():
 ```
 
 
-![png](output_153_0.png)
+![png](output_162_0.png)
 
 
 
