@@ -115,41 +115,41 @@ from fsds_100719.imports import *
 
 
 <style  type="text/css" >
-</style><table id="T_150516d2_293d_11ea_824d_f40f2405a054" ><caption>Loaded Packages and Handles</caption><thead>    <tr>        <th class="col_heading level0 col0" >Handle</th>        <th class="col_heading level0 col1" >Package</th>        <th class="col_heading level0 col2" >Description</th>    </tr></thead><tbody>
+</style><table id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054" ><caption>Loaded Packages and Handles</caption><thead>    <tr>        <th class="col_heading level0 col0" >Handle</th>        <th class="col_heading level0 col1" >Package</th>        <th class="col_heading level0 col2" >Description</th>    </tr></thead><tbody>
                 <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col0" class="data row0 col0" >dp</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col1" class="data row0 col1" >IPython.display</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row0_col2" class="data row0 col2" >Display modules with helpful display and clearing commands.</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col0" class="data row0 col0" >dp</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col1" class="data row0 col1" >IPython.display</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col2" class="data row0 col2" >Display modules with helpful display and clearing commands.</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col0" class="data row1 col0" >fs</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col1" class="data row1 col1" >fsds_100719</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row1_col2" class="data row1 col2" >Custom data science bootcamp student package</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col0" class="data row1 col0" >fs</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col1" class="data row1 col1" >fsds_100719</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col2" class="data row1 col2" >Custom data science bootcamp student package</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col0" class="data row2 col0" >mpl</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col1" class="data row2 col1" >matplotlib</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row2_col2" class="data row2 col2" >Matplotlib's base OOP module with formatting artists</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col0" class="data row2 col0" >mpl</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col1" class="data row2 col1" >matplotlib</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col2" class="data row2 col2" >Matplotlib's base OOP module with formatting artists</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col0" class="data row3 col0" >plt</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col1" class="data row3 col1" >matplotlib.pyplot</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row3_col2" class="data row3 col2" >Matplotlib's matlab-like plotting module</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col0" class="data row3 col0" >plt</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col1" class="data row3 col1" >matplotlib.pyplot</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col2" class="data row3 col2" >Matplotlib's matlab-like plotting module</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col0" class="data row4 col0" >np</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col1" class="data row4 col1" >numpy</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row4_col2" class="data row4 col2" >scientific computing with Python</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col0" class="data row4 col0" >np</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col1" class="data row4 col1" >numpy</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col2" class="data row4 col2" >scientific computing with Python</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col0" class="data row5 col0" >pd</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col1" class="data row5 col1" >pandas</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row5_col2" class="data row5 col2" >High performance data structures and tools</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col0" class="data row5 col0" >pd</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col1" class="data row5 col1" >pandas</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col2" class="data row5 col2" >High performance data structures and tools</td>
             </tr>
             <tr>
-                                <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col0" class="data row6 col0" >sns</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col1" class="data row6 col1" >seaborn</td>
-                        <td id="T_150516d2_293d_11ea_824d_f40f2405a054row6_col2" class="data row6 col2" >High-level data visualization library based on matplotlib</td>
+                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col0" class="data row6 col0" >sns</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col1" class="data row6 col1" >seaborn</td>
+                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col2" class="data row6 col2" >High-level data visualization library based on matplotlib</td>
             </tr>
     </tbody></table>
 
@@ -1233,44 +1233,6 @@ Cohen_d(discount, fullprice)
 
 ### Post-hoc Tests
 
-
-```python
-# Create dataframe with 5% discount orders and re-calculate significance and effect 
-df_dctLosses = df_orderDetail.loc[(df_orderDetail['discounted'] == True) & (df_orderDetail['Discount'] != 0.05)]
-df_dctGains = df_orderDetail.loc[(df_orderDetail['Discount'] == 0.05)]
-```
-
-
-```python
-print('5 Percent Discount Orders')
-display(df_dcFive.describe(), display_id='df_dcFive')
-print('Ineffective Discount Orders')
-display(df_dcLosses.describe(), display_id='df_dcLosses')
-
-```
-
-
-```python
-# insert boolean column for discount orders that affect order quantity
-df_orderDetail['dc_effect'] = np.where(df_orderDetail['Discount'] == 0.05, 1, 0)
-
-
-
-# split orders into two groups: 
-dc_loss = df_orderDetail.groupby('dc_effect').get_group(0)['Quantity']
-dc_five = df_orderDetail.groupby('dc_effect').get_group(1)['Quantity']
-```
-
-
-```python
-# compare discount orders
-fig = plt.figure(figsize=(10,8))
-ax = fig.gca(title="Distribution of Discounted Order Groups", xlabel="Avg Quantity Per Order")
-sns.distplot(dc_loss)
-sns.distplot(dc_five)
-ax.legend(['Ineffective', 'Five %'])
-```
-
 The mean quantity per order is similar for each of the discount levels that we identified as significant. The obvious conclusion to draw from this is that offering a discount higher than 5% does not increase the order quantities; higher discounts only produce higher loss in revenue.
 
 
@@ -1290,12 +1252,83 @@ df.head()
 
 ```
 
+    9
+
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Discount</th>
+      <th>revLoss</th>
+      <th>NumOrders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.25</td>
+      <td>131918.09</td>
+      <td>154</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.20</td>
+      <td>111476.38</td>
+      <td>161</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.15</td>
+      <td>102948.44</td>
+      <td>157</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.10</td>
+      <td>101665.71</td>
+      <td>173</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.03</td>
+      <td>124.65</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 
 ```python
 print("Total Revenue Forfeited $", df.revLoss.sum())
 print("Number of Orders Affected ", df.NumOrders.sum())
 print("Avg Forfeited Per Order $", df.revLoss.sum()/df.NumOrders.sum())
 ```
+
+    Total Revenue Forfeited $ 448373.27
+    Number of Orders Affected  653
+    Avg Forfeited Per Order $ 686.6359418070444
+
 
 ## Analyze Results
 
@@ -1859,8 +1892,8 @@ fs.ft.hakkeray.hot_stats(df_country, 'ShipCountry')
     Denmark         46
     Argentina       34
     Portugal        30
-    Norway          16
     Poland          16
+    Norway          16
     Name: ShipCountry, dtype: int64
     
     # Unique Values: 21
@@ -1910,8 +1943,8 @@ df_countries.ShipCountry.value_counts()
     Denmark         46
     Argentina       34
     Portugal        30
-    Norway          16
     Poland          16
+    Norway          16
     Name: ShipCountry, dtype: int64
 
 
@@ -1997,545 +2030,6 @@ rp.summary_cont(df_countries.groupby(['discounted']))
 
 
 
-
-```python
-display(rp.summary_cont(fp))
-display(rp.summary_cont(dc))
-```
-
-    
-    
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Variable</th>
-      <th>N</th>
-      <th>Mean</th>
-      <th>SD</th>
-      <th>SE</th>
-      <th>95% Conf.</th>
-      <th>Interval</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>Quantity</td>
-      <td>72.0</td>
-      <td>24.819444</td>
-      <td>14.925473</td>
-      <td>1.758984</td>
-      <td>21.31213</td>
-      <td>28.326759</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-    
-    
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Variable</th>
-      <th>N</th>
-      <th>Mean</th>
-      <th>SD</th>
-      <th>SE</th>
-      <th>95% Conf.</th>
-      <th>Interval</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>Quantity</td>
-      <td>46.0</td>
-      <td>24.978261</td>
-      <td>16.942372</td>
-      <td>2.498016</td>
-      <td>19.946998</td>
-      <td>30.009524</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-```python
-rp.summary_cont(df_countries.groupby(['ShipCountry', 'discounted']))
-```
-
-    
-    
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th colspan="6" halign="left">Quantity</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>N</th>
-      <th>Mean</th>
-      <th>SD</th>
-      <th>SE</th>
-      <th>95% Conf.</th>
-      <th>Interval</th>
-    </tr>
-    <tr>
-      <th>ShipCountry</th>
-      <th>discounted</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Argentina</td>
-      <td>0</td>
-      <td>34</td>
-      <td>9.970588</td>
-      <td>7.030174</td>
-      <td>1.205665</td>
-      <td>7.607485</td>
-      <td>12.333692</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Austria</td>
-      <td>0</td>
-      <td>67</td>
-      <td>39.746269</td>
-      <td>26.867432</td>
-      <td>3.282379</td>
-      <td>33.312805</td>
-      <td>46.179732</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>58</td>
-      <td>43.172414</td>
-      <td>30.972052</td>
-      <td>4.066830</td>
-      <td>35.201428</td>
-      <td>51.143400</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Belgium</td>
-      <td>0</td>
-      <td>42</td>
-      <td>23.380952</td>
-      <td>13.817543</td>
-      <td>2.132093</td>
-      <td>19.202050</td>
-      <td>27.559855</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>14</td>
-      <td>29.285714</td>
-      <td>15.284122</td>
-      <td>4.084854</td>
-      <td>21.279401</td>
-      <td>37.292027</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Brazil</td>
-      <td>0</td>
-      <td>108</td>
-      <td>21.750000</td>
-      <td>13.705259</td>
-      <td>1.318789</td>
-      <td>19.165173</td>
-      <td>24.334827</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>95</td>
-      <td>19.978947</td>
-      <td>13.977930</td>
-      <td>1.434105</td>
-      <td>17.168101</td>
-      <td>22.789794</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Canada</td>
-      <td>0</td>
-      <td>44</td>
-      <td>20.704545</td>
-      <td>15.745918</td>
-      <td>2.373786</td>
-      <td>16.051924</td>
-      <td>25.357167</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>31</td>
-      <td>34.612903</td>
-      <td>19.409066</td>
-      <td>3.485971</td>
-      <td>27.780400</td>
-      <td>41.445407</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Denmark</td>
-      <td>0</td>
-      <td>27</td>
-      <td>25.740741</td>
-      <td>13.877465</td>
-      <td>2.670719</td>
-      <td>20.506131</td>
-      <td>30.975351</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>19</td>
-      <td>25.000000</td>
-      <td>17.117243</td>
-      <td>3.926965</td>
-      <td>17.303149</td>
-      <td>32.696851</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Finland</td>
-      <td>0</td>
-      <td>39</td>
-      <td>15.589744</td>
-      <td>10.715748</td>
-      <td>1.715893</td>
-      <td>12.226593</td>
-      <td>18.952894</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>15</td>
-      <td>18.466667</td>
-      <td>11.734361</td>
-      <td>3.029799</td>
-      <td>12.528260</td>
-      <td>24.405073</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">France</td>
-      <td>0</td>
-      <td>107</td>
-      <td>16.971963</td>
-      <td>12.001146</td>
-      <td>1.160195</td>
-      <td>14.697981</td>
-      <td>19.245944</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>77</td>
-      <td>18.675325</td>
-      <td>11.074439</td>
-      <td>1.262049</td>
-      <td>16.201708</td>
-      <td>21.148942</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Germany</td>
-      <td>0</td>
-      <td>178</td>
-      <td>26.230337</td>
-      <td>18.992647</td>
-      <td>1.423559</td>
-      <td>23.440161</td>
-      <td>29.020513</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>150</td>
-      <td>30.293333</td>
-      <td>21.487798</td>
-      <td>1.754471</td>
-      <td>26.854569</td>
-      <td>33.732097</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Ireland</td>
-      <td>0</td>
-      <td>20</td>
-      <td>27.950000</td>
-      <td>20.155905</td>
-      <td>4.506997</td>
-      <td>19.116285</td>
-      <td>36.783715</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>35</td>
-      <td>32.142857</td>
-      <td>20.121897</td>
-      <td>3.401221</td>
-      <td>25.476463</td>
-      <td>38.809251</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Italy</td>
-      <td>0</td>
-      <td>26</td>
-      <td>14.307692</td>
-      <td>10.664968</td>
-      <td>2.091572</td>
-      <td>10.208211</td>
-      <td>18.407174</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>27</td>
-      <td>16.666667</td>
-      <td>11.378117</td>
-      <td>2.189720</td>
-      <td>12.374816</td>
-      <td>20.958517</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Mexico</td>
-      <td>0</td>
-      <td>64</td>
-      <td>13.703125</td>
-      <td>8.956118</td>
-      <td>1.119515</td>
-      <td>11.508876</td>
-      <td>15.897374</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>8</td>
-      <td>18.500000</td>
-      <td>14.764823</td>
-      <td>5.220153</td>
-      <td>8.268500</td>
-      <td>28.731500</td>
-    </tr>
-    <tr>
-      <td>Norway</td>
-      <td>0</td>
-      <td>16</td>
-      <td>10.062500</td>
-      <td>4.611128</td>
-      <td>1.152782</td>
-      <td>7.803047</td>
-      <td>12.321953</td>
-    </tr>
-    <tr>
-      <td>Poland</td>
-      <td>0</td>
-      <td>16</td>
-      <td>12.812500</td>
-      <td>8.439737</td>
-      <td>2.109934</td>
-      <td>8.677029</td>
-      <td>16.947971</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Portugal</td>
-      <td>0</td>
-      <td>12</td>
-      <td>19.083333</td>
-      <td>12.522404</td>
-      <td>3.614907</td>
-      <td>11.998116</td>
-      <td>26.168550</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>18</td>
-      <td>16.888889</td>
-      <td>8.976367</td>
-      <td>2.115750</td>
-      <td>12.742019</td>
-      <td>21.035759</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Spain</td>
-      <td>0</td>
-      <td>40</td>
-      <td>10.625000</td>
-      <td>9.859754</td>
-      <td>1.558964</td>
-      <td>7.569431</td>
-      <td>13.680569</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>14</td>
-      <td>20.928571</td>
-      <td>12.034976</td>
-      <td>3.216483</td>
-      <td>14.624265</td>
-      <td>27.232878</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Sweden</td>
-      <td>0</td>
-      <td>58</td>
-      <td>21.534483</td>
-      <td>14.521872</td>
-      <td>1.906815</td>
-      <td>17.797125</td>
-      <td>25.271840</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>39</td>
-      <td>25.282051</td>
-      <td>14.231079</td>
-      <td>2.278796</td>
-      <td>20.815610</td>
-      <td>29.748492</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Switzerland</td>
-      <td>0</td>
-      <td>28</td>
-      <td>24.321429</td>
-      <td>12.789039</td>
-      <td>2.416901</td>
-      <td>19.584302</td>
-      <td>29.058555</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>24</td>
-      <td>24.750000</td>
-      <td>17.323646</td>
-      <td>3.536174</td>
-      <td>17.819098</td>
-      <td>31.680902</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">UK</td>
-      <td>0</td>
-      <td>109</td>
-      <td>17.944954</td>
-      <td>13.164089</td>
-      <td>1.260891</td>
-      <td>15.473608</td>
-      <td>20.416301</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>26</td>
-      <td>30.230769</td>
-      <td>22.016917</td>
-      <td>4.317873</td>
-      <td>21.767739</td>
-      <td>38.693799</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">USA</td>
-      <td>0</td>
-      <td>210</td>
-      <td>24.123810</td>
-      <td>21.934524</td>
-      <td>1.513626</td>
-      <td>21.157103</td>
-      <td>27.090516</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>142</td>
-      <td>30.028169</td>
-      <td>25.023944</td>
-      <td>2.099963</td>
-      <td>25.912242</td>
-      <td>34.144096</td>
-    </tr>
-    <tr>
-      <td rowspan="2" valign="top">Venezuela</td>
-      <td>0</td>
-      <td>72</td>
-      <td>24.819444</td>
-      <td>14.925473</td>
-      <td>1.758984</td>
-      <td>21.371836</td>
-      <td>28.267053</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>46</td>
-      <td>24.978261</td>
-      <td>16.942372</td>
-      <td>2.498016</td>
-      <td>20.082149</td>
-      <td>29.874373</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
 ## Test
 
 ### Sample Size
@@ -2579,28 +2073,28 @@ stat_dict
 
 
 
-![png](output_70_1.png)
+![png](output_64_1.png)
 
 
     Belgium
 
 
 
-![png](output_70_3.png)
+![png](output_64_3.png)
 
 
     Brazil
 
 
 
-![png](output_70_5.png)
+![png](output_64_5.png)
 
 
     Canada
 
 
 
-![png](output_70_7.png)
+![png](output_64_7.png)
 
 
     
@@ -2609,49 +2103,49 @@ stat_dict
 
 
 
-![png](output_70_9.png)
+![png](output_64_9.png)
 
 
     Finland
 
 
 
-![png](output_70_11.png)
+![png](output_64_11.png)
 
 
     France
 
 
 
-![png](output_70_13.png)
+![png](output_64_13.png)
 
 
     Germany
 
 
 
-![png](output_70_15.png)
+![png](output_64_15.png)
 
 
     Ireland
 
 
 
-![png](output_70_17.png)
+![png](output_64_17.png)
 
 
     Italy
 
 
 
-![png](output_70_19.png)
+![png](output_64_19.png)
 
 
     Mexico
 
 
 
-![png](output_70_21.png)
+![png](output_64_21.png)
 
 
     
@@ -2660,14 +2154,14 @@ stat_dict
 
 
 
-![png](output_70_23.png)
+![png](output_64_23.png)
 
 
     Spain
 
 
 
-![png](output_70_25.png)
+![png](output_64_25.png)
 
 
     
@@ -2676,21 +2170,21 @@ stat_dict
 
 
 
-![png](output_70_27.png)
+![png](output_64_27.png)
 
 
     Switzerland
 
 
 
-![png](output_70_29.png)
+![png](output_64_29.png)
 
 
     UK
 
 
 
-![png](output_70_31.png)
+![png](output_64_31.png)
 
 
     
@@ -2699,7 +2193,7 @@ stat_dict
 
 
 
-![png](output_70_33.png)
+![png](output_64_33.png)
 
 
     
@@ -2708,7 +2202,7 @@ stat_dict
 
 
 
-![png](output_70_35.png)
+![png](output_64_35.png)
 
 
 
@@ -2753,12 +2247,12 @@ ax.legend(['Full Price','Discounted'])
 
 
 
-    <matplotlib.legend.Legend at 0x1a1f96ef60>
+    <matplotlib.legend.Legend at 0x1a25ab2978>
 
 
 
 
-![png](output_73_1.png)
+![png](output_67_1.png)
 
 
 
@@ -2816,34 +2310,34 @@ anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 
 
 <style  type="text/css" >
-</style><table id="T_29a39d34_29a8_11ea_aa98_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+</style><table id="T_3d92bd06_29bb_11ea_af86_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row0" class="row_heading level0 row0" >C(discounted)</th>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col0" class="data row0 col0" >9.78092e-08</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col1" class="data row0 col1" >1</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col2" class="data row0 col2" >3.07557e-10</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row0_col3" class="data row0 col3" >0.99999</td>
+                        <th id="T_3d92bd06_29bb_11ea_af86_f40f2405a054level0_row0" class="row_heading level0 row0" >C(discounted)</th>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row0_col0" class="data row0 col0" >9.78092e-08</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row0_col1" class="data row0 col1" >1</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row0_col2" class="data row0 col2" >3.07557e-10</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row0_col3" class="data row0 col3" >0.99999</td>
             </tr>
             <tr>
-                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row1" class="row_heading level0 row1" >C(ShipCountry)</th>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col0" class="data row1 col0" >101347</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col1" class="data row1 col1" >20</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col2" class="data row1 col2" >15.9341</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+                        <th id="T_3d92bd06_29bb_11ea_af86_f40f2405a054level0_row1" class="row_heading level0 row1" >C(ShipCountry)</th>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row1_col0" class="data row1 col0" >101347</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row1_col1" class="data row1 col1" >20</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row1_col2" class="data row1 col2" >15.9341</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row2" class="row_heading level0 row2" >C(discounted):C(ShipCountry)</th>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col0" class="data row2 col0" >15584.9</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col1" class="data row2 col1" >20</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col2" class="data row2 col2" >2.4503</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row2_col3" class="data row2 col3" >0.00061</td>
+                        <th id="T_3d92bd06_29bb_11ea_af86_f40f2405a054level0_row2" class="row_heading level0 row2" >C(discounted):C(ShipCountry)</th>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row2_col0" class="data row2 col0" >15584.9</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row2_col1" class="data row2 col1" >20</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row2_col2" class="data row2 col2" >2.4503</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row2_col3" class="data row2 col3" >0.00061</td>
             </tr>
             <tr>
-                        <th id="T_29a39d34_29a8_11ea_aa98_f40f2405a054level0_row3" class="row_heading level0 row3" >Residual</th>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col0" class="data row3 col0" >672930</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col1" class="data row3 col1" >2116</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col2" class="data row3 col2" >nan</td>
-                        <td id="T_29a39d34_29a8_11ea_aa98_f40f2405a054row3_col3" class="data row3 col3" >nan</td>
+                        <th id="T_3d92bd06_29bb_11ea_af86_f40f2405a054level0_row3" class="row_heading level0 row3" >Residual</th>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row3_col0" class="data row3 col0" >672930</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row3_col1" class="data row3 col1" >2116</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row3_col2" class="data row3 col2" >nan</td>
+                        <td id="T_3d92bd06_29bb_11ea_af86_f40f2405a054row3_col3" class="data row3 col3" >nan</td>
             </tr>
     </tbody></table>
 
@@ -2912,7 +2406,7 @@ ax.set_title('Average Discount Order Quantity by Country', fontdict={'family': '
 
 
 
-![png](output_82_1.png)
+![png](output_76_1.png)
 
 
 ### Effect Size
@@ -3041,7 +2535,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_87_2.png)
+![png](output_81_2.png)
 
 
 According to the plot above, the actual number of discounted orders is lower than the number of full price orders. Let's compare the sum of quantities for these orders in each group.
@@ -3159,7 +2653,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_89_2.png)
+![png](output_83_2.png)
 
 
 This still doesn't tell us much about whether or not these countries prefer discounts (tend to order more products) or not - in order to get better insight, we need to look at the average order size (mean quantities per order) for each group.
@@ -3280,7 +2774,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_91_2.png)
+![png](output_85_2.png)
 
 
 The above plots indicate that when a discount is offered, certain countries order higher quantities of products. Let's look at the values to determine what percentage more they purchase when an order is discounted.
@@ -3296,7 +2790,7 @@ ax = sns.barplot(x='ShipCountry', y='Quantity', hue='effect_cqd', palette='paste
 ```
 
 
-![png](output_93_0.png)
+![png](output_87_0.png)
 
 
 
@@ -3327,79 +2821,7 @@ ax.set_title('Order Count by Country', fontdict={'family': 'PT Mono', 'size':16}
 
 
 
-![png](output_94_1.png)
-
-
-
-```python
-country_mean_qty                           
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>ShipCountry</th>
-      <th>fpmean_qty</th>
-      <th>dcmean_qty</th>
-      <th>mean_diff</th>
-      <th>mean_qty</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>Canada</td>
-      <td>20.704545</td>
-      <td>34.612903</td>
-      <td>13.908358</td>
-      <td>26.453333</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Spain</td>
-      <td>10.625000</td>
-      <td>20.928571</td>
-      <td>10.303571</td>
-      <td>13.296296</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>UK</td>
-      <td>17.944954</td>
-      <td>30.230769</td>
-      <td>12.285815</td>
-      <td>20.311111</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>USA</td>
-      <td>24.123810</td>
-      <td>30.028169</td>
-      <td>5.904359</td>
-      <td>26.505682</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+![png](output_88_1.png)
 
 
 ## Results
@@ -3789,11 +3211,11 @@ fig.subplots_adjust(hspace=0.4);
 ```
 
 
-![png](output_111_0.png)
+![png](output_104_0.png)
 
 
 
-![png](output_111_1.png)
+![png](output_104_1.png)
 
 
 The graphs show that Western Europe is the region with the greatest number of orders, and also has the greatest total revenue. However, North America has the most expensive order on average (followed by Western Europe). Southern and Eastern Europe has the lowest number of orders, lowest total revenue, and cheapest order on average. The third graph lent support to the alternate hypothesis that there are significant differences in average order revenue between regions. 
@@ -3821,7 +3243,7 @@ ax.set_title('Average Order Revenue by Region', fontdict={'family': 'PT Mono', '
 
 
 
-![png](output_115_1.png)
+![png](output_108_1.png)
 
 
 ### Normality
@@ -3847,27 +3269,27 @@ anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 
 
 <style  type="text/css" >
-</style><table id="T_ac06538c_26b0_11ea_ba20_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+</style><table id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row0" class="row_heading level0 row0" >C(Region)</th>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col0" class="data row0 col0" >1.03486e+07</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col1" class="data row0 col1" >5</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col2" class="data row0 col2" >3.98262e+30</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
+                        <th id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054level0_row0" class="row_heading level0 row0" >C(Region)</th>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row0_col0" class="data row0 col0" >1.03486e+07</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row0_col1" class="data row0 col1" >5</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row0_col2" class="data row0 col2" >3.98262e+30</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row1" class="row_heading level0 row1" >Revenue:C(Region)</th>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col0" class="data row1 col0" >5.34162e+08</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col1" class="data row1 col1" >6</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col2" class="data row1 col2" >1.71309e+32</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+                        <th id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054level0_row1" class="row_heading level0 row1" >Revenue:C(Region)</th>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row1_col0" class="data row1 col0" >5.34162e+08</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row1_col1" class="data row1 col1" >6</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row1_col2" class="data row1 col2" >1.71309e+32</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_ac06538c_26b0_11ea_ba20_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col0" class="data row2 col0" >4.10034e-22</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col1" class="data row2 col1" >789</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
-                        <td id="T_ac06538c_26b0_11ea_ba20_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
+                        <th id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row2_col0" class="data row2 col0" >4.10034e-22</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row2_col1" class="data row2 col1" >789</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
+                        <td id="T_60364b3e_29bb_11ea_9ec9_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
             </tr>
     </tbody></table>
 
@@ -4119,7 +3541,7 @@ for region in set(logRegion_df.Region):
 ```
 
 
-![png](output_125_0.png)
+![png](output_118_0.png)
 
 
 
@@ -4950,7 +4372,35 @@ ax.set_title('Monthly Order Qty', fontdict={'family': 'PT Mono', 'size':16})
 
 
 
-![png](output_143_1.png)
+![png](output_136_1.png)
+
+
+
+```python
+sns.set_style("whitegrid")
+%config InlineBackend.figure_format='retina'
+%matplotlib inline
+
+
+# Check if sample sizes allow us to ignore assumptions;
+# visualize sample size comparisons for two groups (normality check)
+fig = plt.figure(figsize=(14,8))
+ax = fig.gca()
+ax = sns.barplot(x='OrderMonth', y='Quantity', data=df_monthly)
+ax.set_title('Monthly Order Qty', fontdict={'family': 'PT Mono', 'size':16})
+
+
+```
+
+
+
+
+    Text(0.5, 1.0, 'Monthly Order Qty')
+
+
+
+
+![png](output_137_1.png)
 
 
 
@@ -4969,27 +4419,27 @@ anova_table.style.format("{:.5f}", subset=['PR(>F)'])
 
 
 <style  type="text/css" >
-</style><table id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
+</style><table id="T_6ac9e970_29bb_11ea_8476_f40f2405a054" ><thead>    <tr>        <th class="blank level0" ></th>        <th class="col_heading level0 col0" >sum_sq</th>        <th class="col_heading level0 col1" >df</th>        <th class="col_heading level0 col2" >F</th>        <th class="col_heading level0 col3" >PR(>F)</th>    </tr></thead><tbody>
                 <tr>
-                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row0" class="row_heading level0 row0" >C(OrderMonth)</th>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col0" class="data row0 col0" >7395.98</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col1" class="data row0 col1" >11</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col2" class="data row0 col2" >2.94204e+29</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
+                        <th id="T_6ac9e970_29bb_11ea_8476_f40f2405a054level0_row0" class="row_heading level0 row0" >C(OrderMonth)</th>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row0_col0" class="data row0 col0" >7395.98</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row0_col1" class="data row0 col1" >11</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row0_col2" class="data row0 col2" >2.94204e+29</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row0_col3" class="data row0 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row1" class="row_heading level0 row1" >Quantity:C(OrderMonth)</th>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col0" class="data row1 col0" >772004</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col1" class="data row1 col1" >12</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col2" class="data row1 col2" >2.81504e+31</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
+                        <th id="T_6ac9e970_29bb_11ea_8476_f40f2405a054level0_row1" class="row_heading level0 row1" >Quantity:C(OrderMonth)</th>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row1_col0" class="data row1 col0" >772004</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row1_col1" class="data row1 col1" >12</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row1_col2" class="data row1 col2" >2.81504e+31</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row1_col3" class="data row1 col3" >0.00000</td>
             </tr>
             <tr>
-                        <th id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col0" class="data row2 col0" >4.87009e-24</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col1" class="data row2 col1" >2131</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
-                        <td id="T_6952c90a_29b0_11ea_a3f8_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
+                        <th id="T_6ac9e970_29bb_11ea_8476_f40f2405a054level0_row2" class="row_heading level0 row2" >Residual</th>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row2_col0" class="data row2 col0" >4.87009e-24</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row2_col1" class="data row2 col1" >2131</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row2_col2" class="data row2 col2" >nan</td>
+                        <td id="T_6ac9e970_29bb_11ea_8476_f40f2405a054row2_col3" class="data row2 col3" >nan</td>
             </tr>
     </tbody></table>
 
@@ -5485,7 +4935,7 @@ df_category.loc[df_category['CategoryName'] == 'Beverages']['Revenue'].sum()
 
 
 
-    267868.18
+    267868.17999999993
 
 
 
@@ -5524,7 +4974,7 @@ for k,v in rev_per_cat.items():
 ```
 
 
-![png](output_162_0.png)
+![png](output_156_0.png)
 
 
 
