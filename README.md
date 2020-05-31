@@ -1,21 +1,45 @@
+# Northwind SQL Database Project
 
-## **Module 3 Final Project**
+![GitHub repo size](https://img.shields.io/github/repo-size/hakkeray/northwind-sql-database-project)
+![GitHub license](https://img.shields.io/github/license/hakkeray/northwind-sql-database-project?color=black)
 
-    Title: Northwind Database
-    Submitted By: RU KEÏN
-    Date: December 5, 2019
-    Instructor: James Irving PhD
-    https://vimeo.com/rukein/northwind-datascience-project-presentation
-    http://www.hakkeray.com/datascience/2019/12/07/thinking-outside-the-lego-box.html
+The `Northwind SQL Database Project` demonstrates how to use `SQL queries` and `hypothesis testing` in order to `recommend business strategies` for increasing sales and reducing costs for the fictitious "Northwind" company. The Northwind SQL database was created by Microsoft for data scientists to practice SQL queries and hypothesis testing in their analyses.
 
----
-## Introduction
+![northwind](https://github.com/hakkeray/dsc-mod-3-project-online-ds-ft-100719/blob/master/Northwind_ERD_updated.png?raw=true)
 
-The goal of this project is to recommend business strategies for increasing sales and saving costs for the Northwind company. This project is based on a fictitious business database created by Microsoft for the use of practicing SQL, hypothesis testing and other data analysis related projects. 
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+* You have installed the latest version of `Jupyter Notebook`
+* You have a `<Windows/Linux/Mac>` machine.
+
+### FSDS - standard data science tools
+
+You can do a quick install of all the standard data science libraries (matplotlib, pandas, etc) using the FSDS pypi package from `James Irving`:
+
+```bash
+pip install -U fsds_100719
+```
+
+## Running the Northwind SQL Database Project
+
+To run this project locally, follow these steps:
+
+In the command line/terminal:
+
+```bash
+git clone https://github.com/hakkeray/northwind-sql-database-project
+cd northwind-sql-database-project
+jupyter notebook
+```
+
+## Hypothesis Testing
 
 Below are 4 hypotheses (each including a null hypothesis and alternative hypothesis) which I will test for statistical significance to determine if there are any relationships which would be useful from a strategic business perspective. Following this I will summarize the results, make final recommendations, and propose ideas for future analytical work.
 
---------------------------
+---
+
 ## Objectives
 
 **H1: Discount and Order Quantity**
@@ -34,146 +58,101 @@ Does region have a statistically significant effect on average revenue per order
 
 Does time of year have a statistically significant effect on average revenue per order?
 
----
 ## Process Outline
 
 Outline of process I will follow in order to answer questions above:
 
-- Question
-    1. Hypotheses
-    2. Exploratory Data Analysis (EDA)
-        - Select dataset
-        - Group data
-        - Explore data
-    3. Assumption Tests:
-        - Sample size
-        - Normality and Variance
-    4. Statistical Tests:
-        - Statistical test
-        - Effect size (if necessary)
-        - Post-hoc tests (if necessary)
-    5. Summarize Results
+-Question
+1. Hypotheses
+2. Exploratory Data Analysis (EDA)
+
+-Select dataset
+-Group data
+-Explore data
+
+3. Assumption Tests:
+-Sample size
+-Normality and Variance
+
+4. Statistical Tests:
+-Statistical test
+-Effect size (if necessary)
+-Post-hoc tests (if necessary)
+
+5. Summarize Results
 
 ---
 
-## Statistical Analysis Pipeline 
+## Statistical Analysis Pipeline
 
 For #3 and #4 above (Assumption and Statistical Tests):
 
-1. Check if sample sizes allow us to ignore assumptions by visualizing sample size comparisons for two groups (normality check).
-    * Bar Plot: SEM (Standard Error of the Mean)
+  1. Check if sample sizes allow us to ignore assumptions by visualizing sample size comparisons for two groups (normality check).
+      * Bar Plot: SEM (Standard Error of the Mean)
 
-2. If above test fails, check for normality and homogeneity of variance:
-    * Test Assumption Normality:
-        - D'Agostino-Pearson: scipy.stats.normaltest
-        - Shapiro-Wilik Test: scipy.stats.shapiro
-    
-    * Test for Homogeneity of Variance:
-        - Levene's Test: scipy.stats.levene)
-Parametric tests (means)	Nonparametric tests (medians)
-1-sample t test	1-sample Sign, 1-sample Wilcoxon
-2-sample t test	Mann-Whitney tes
-One-Way ANOVA	Kruskal-Wallis, Mood’s median tes
-Factorial DOE with one factor and one blocking variable	Friedman test
-3. Choose appropriate test based on above
-    * T Test (1-sample)
-         - `stats.ttest_1samp()`
-    * T Test (2-sample)
-        - stats.ttest_ind()
-    * Welch's T-Test (2-sample)
-        - stats.ttest_ind(equal_var=False)
-    * Mann Whitney U
-        - stats.mannwhitneyu()
-    * ANOVA
-        - stats.f_oneway()
+  2. If above test fails, check for normality and homogeneity of variance:
+      * Test Assumption Normality:
+          - D'Agostino-Pearson: scipy.stats.normaltest
+          - Shapiro-Wilik Test: scipy.stats.shapiro
+      
+      * Test for Homogeneity of Variance:
+          - Levene's Test: scipy.stats.levene)
+  Parametric tests (means)	Nonparametric tests (medians)
+  1-sample t test	1-sample Sign, 1-sample Wilcoxon
+  2-sample t test	Mann-Whitney tes
+  One-Way ANOVA	Kruskal-Wallis, Mood’s median tes
+  Factorial DOE with one factor and one blocking variable	Friedman test
 
-4. Calculate effect size for significant results.
-    * Effect size: 
-        - cohen's d
+  3. Choose appropriate test based on above
+      * T Test (1-sample)
+          - `stats.ttest_1samp()`
+      * T Test (2-sample)
+          - stats.ttest_ind()
+      * Welch's T-Test (2-sample)
+          - stats.ttest_ind(equal_var=False)
+      * Mann Whitney U
+          - stats.mannwhitneyu()
+      * ANOVA
+          - stats.f_oneway()
 
-    -Interpretation:
-    - Small effect = 0.2 ( cannot be seen by naked eye)
-    - Medium effect = 0.5
-    - Large Effect = 0.8 (can be seen by naked eye)
+  4. Calculate effect size for significant results.
+      * Effect size: 
+          - cohen's d
 
-
-5. If significant, follow up with post-hoc tests (if have more than 2 groups)
-    * Tukey's
-        - statsmodels.stats.multicomp.pairwise_tukeyhsd
-
-## Data Prep
+      -Interpretation:
+      - Small effect = 0.2 ( cannot be seen by naked eye)
+      - Medium effect = 0.5
+      - Large Effect = 0.8 (can be seen by naked eye)
 
 
-```python
-# install requisite libraries and packages
-!pip install -U fsds_100719 --user
-from fsds_100719.imports import *
-```
+  5. If significant, follow up with post-hoc tests (if have more than 2 groups)
+      * Tukey's
+          - statsmodels.stats.multicomp.pairwise_tukeyhsd
 
-    fsds_1007219  v0.4.45 loaded.  Read the docs: https://fsds.readthedocs.io/en/latest/ 
+## Contact
 
+If you want to contact me you can reach me at <rukeine@gmail.com>.
 
+## License
 
-<style  type="text/css" >
-</style><table id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054" ><caption>Loaded Packages and Handles</caption><thead>    <tr>        <th class="col_heading level0 col0" >Handle</th>        <th class="col_heading level0 col1" >Package</th>        <th class="col_heading level0 col2" >Description</th>    </tr></thead><tbody>
-                <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col0" class="data row0 col0" >dp</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col1" class="data row0 col1" >IPython.display</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row0_col2" class="data row0 col2" >Display modules with helpful display and clearing commands.</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col0" class="data row1 col0" >fs</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col1" class="data row1 col1" >fsds_100719</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row1_col2" class="data row1 col2" >Custom data science bootcamp student package</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col0" class="data row2 col0" >mpl</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col1" class="data row2 col1" >matplotlib</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row2_col2" class="data row2 col2" >Matplotlib's base OOP module with formatting artists</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col0" class="data row3 col0" >plt</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col1" class="data row3 col1" >matplotlib.pyplot</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row3_col2" class="data row3 col2" >Matplotlib's matlab-like plotting module</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col0" class="data row4 col0" >np</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col1" class="data row4 col1" >numpy</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row4_col2" class="data row4 col2" >scientific computing with Python</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col0" class="data row5 col0" >pd</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col1" class="data row5 col1" >pandas</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row5_col2" class="data row5 col2" >High performance data structures and tools</td>
-            </tr>
-            <tr>
-                                <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col0" class="data row6 col0" >sns</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col1" class="data row6 col1" >seaborn</td>
-                        <td id="T_2b6a5d82_29bb_11ea_84cd_f40f2405a054row6_col2" class="data row6 col2" >High-level data visualization library based on matplotlib</td>
-            </tr>
-    </tbody></table>
-
-
+This project uses the following license: [MIT License](./LICENSE.md).
 
 ```python
-from fsds_100719.ds import ihelp, reload
-import fsds_100719 as fs
+#         _ __ _   _
+#  /\_/\ | '__| | | |
+#  [===] | |  | |_| |
+#   \./  |_|   \__,_|
 ```
+---
 
-
-```python
-#fs.ft.hakkeray.hot_stats()
-#!pip install researchpy
-```
-
+## Project Demo
 
 ```python
 # connect to database / import data
-import sqlite3 
+import sqlite3
 conn = sqlite3.connect('Northwind_small.sqlite')
 cur = conn.cursor()
 ```
-
 
 ```python
 # function for converting tables into dataframes on the fly
@@ -184,7 +163,6 @@ def get_table(cur, table):
     return df
 ```
 
-
 ```python
 # create dataframe of table names for referencing purposes
 cur.execute("""SELECT name from sqlite_master WHERE type='table';""")
@@ -192,23 +170,8 @@ df_tables = pd.DataFrame(cur.fetchall(), columns=['Table'])
 df_tables
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
+<html>
+<body>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -272,22 +235,8 @@ df_tables
   </tbody>
 </table>
 </div>
-
-
-
-
-```python
-from IPython.display import HTML
-HTML('<img src="https://github.com/hakkeray/dsc-mod-3-project-online-ds-ft-100719/blob/master/Northwind_ERD_updated.png?raw=true">')
-
-```
-
-
-
-
-<img src="https://github.com/hakkeray/dsc-mod-3-project-online-ds-ft-100719/blob/master/Northwind_ERD_updated.png?raw=true">
-
-
+</body>
+</html>
 
 # H1: Discount--Quantity
 
@@ -310,24 +259,9 @@ Select the proper dataset for analysis, perform EDA, and generate data groups fo
 df_orderDetail = get_table(cur, 'OrderDetail')
 df_orderDetail.head()
 ```
-
-
-
-
+<html>
+<body>
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -389,11 +323,10 @@ df_orderDetail.head()
   </tbody>
 </table>
 </div>
-
-
+</body>
+</html>
 
 ### Group
-
 
 ```python
 # check value counts for each level of discount
