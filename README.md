@@ -419,7 +419,7 @@ ax.set_title("Distribution of Full Price vs Discount Order Quantity", fontdict=f
 
 
 
-![png](output_25_1.png)
+![png](/output/output_25_1.png)
 
 
 
@@ -438,7 +438,7 @@ ax.set_title('Discount Levels and Order Qty', fontdict={'family': 'PT Mono', 'si
 
 
 
-![png](output_26_1.png)
+![png](/output/output_26_1.png)
 
 
 We can already see that there is a clear relationship between order quantity and specific discount levels before running any statistical tests. However, what is more interesting to note from the visualization above is that the discount levels that DO have an effect appear to be very similar as far as the mean order quantity. The indication is that discount amount produces diminishing returns (offering a discount higher than 5% - the minimum effective amount - does not actually produce higher order quantity which means we are losing revenue we would have otherwise captured).
@@ -466,7 +466,7 @@ plt.title("Order Quantity Sample Sizes: Full Price vs Discount")
 
 
 
-![png](output_30_1.png)
+![png](/output/output_30_1.png)
 
 
 ### Normality Test
@@ -1123,7 +1123,7 @@ results.plot_simultaneous(comparison_name=0.05, xlabel='Order Quantity', ylabel=
 ```
 
 
-![png](output_38_0.png)
+![png](/output/output_38_0.png)
 
 
 ### Effect Size
@@ -2006,28 +2006,28 @@ stat_dict
 
 
 
-![png](output_64_1.png)
+![png](/output/output_64_1.png)
 
 
     Belgium
 
 
 
-![png](output_64_3.png)
+![png](/output/output_64_3.png)
 
 
     Brazil
 
 
 
-![png](output_64_5.png)
+![png](/output/output_64_5.png)
 
 
     Canada
 
 
 
-![png](output_64_7.png)
+![png](/output/output_64_7.png)
 
 
     
@@ -2036,49 +2036,49 @@ stat_dict
 
 
 
-![png](output_64_9.png)
+![png](/output/output_64_9.png)
 
 
     Finland
 
 
 
-![png](output_64_11.png)
+![png](/output/output_64_11.png)
 
 
     France
 
 
 
-![png](output_64_13.png)
+![png](/output/output_64_13.png)
 
 
     Germany
 
 
 
-![png](output_64_15.png)
+![png](/output/output_64_15.png)
 
 
     Ireland
 
 
 
-![png](output_64_17.png)
+![png](/output/output_64_17.png)
 
 
     Italy
 
 
 
-![png](output_64_19.png)
+![png](/output/output_64_19.png)
 
 
     Mexico
 
 
 
-![png](output_64_21.png)
+![png](/output/output_64_21.png)
 
 
     
@@ -2087,14 +2087,14 @@ stat_dict
 
 
 
-![png](output_64_23.png)
+![png](/output/output_64_23.png)
 
 
     Spain
 
 
 
-![png](output_64_25.png)
+![png](/output/output_64_25.png)
 
 
     
@@ -2103,21 +2103,21 @@ stat_dict
 
 
 
-![png](output_64_27.png)
+![png](/output/output_64_27.png)
 
 
     Switzerland
 
 
 
-![png](output_64_29.png)
+![png](/output/output_64_29.png)
 
 
     UK
 
 
 
-![png](output_64_31.png)
+![png](/output/output_64_31.png)
 
 
     
@@ -2126,7 +2126,7 @@ stat_dict
 
 
 
-![png](output_64_33.png)
+![png](/output/output_64_33.png)
 
 
     
@@ -2135,7 +2135,7 @@ stat_dict
 
 
 
-![png](output_64_35.png)
+![png](/output/output_64_35.png)
 
 
 
@@ -2185,7 +2185,7 @@ ax.legend(['Full Price','Discounted'])
 
 
 
-![png](output_67_1.png)
+![png](/output/output_67_1.png)
 
 
 
@@ -2339,7 +2339,7 @@ ax.set_title('Average Discount Order Quantity by Country', fontdict={'family': '
 
 
 
-![png](output_76_1.png)
+![png](/output/output_76_1.png)
 
 
 ### Effect Size
@@ -2468,7 +2468,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_81_2.png)
+![png](/output/output_81_2.png)
 
 
 According to the plot above, the actual number of discounted orders is lower than the number of full price orders. Let's compare the sum of quantities for these orders in each group.
@@ -2586,7 +2586,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_83_2.png)
+![png](/output/output_83_2.png)
 
 
 This still doesn't tell us much about whether or not these countries prefer discounts (tend to order more products) or not - in order to get better insight, we need to look at the average order size (mean quantities per order) for each group.
@@ -2707,7 +2707,7 @@ ax.set_title(t_label, fontdict=t_font)
 
 
 
-![png](output_85_2.png)
+![png](/output/output_85_2.png)
 
 
 The above plots indicate that when a discount is offered, certain countries order higher quantities of products. Let's look at the values to determine what percentage more they purchase when an order is discounted.
@@ -2723,7 +2723,7 @@ ax = sns.barplot(x='ShipCountry', y='Quantity', hue='effect_cqd', palette='paste
 ```
 
 
-![png](output_87_0.png)
+![png](/output/output_87_0.png)
 
 
 
@@ -2754,7 +2754,7 @@ ax.set_title('Order Count by Country', fontdict={'family': 'PT Mono', 'size':16}
 
 
 
-![png](output_88_1.png)
+![png](/output/output_88_1.png)
 
 
 ## Results
@@ -3144,11 +3144,11 @@ fig.subplots_adjust(hspace=0.4);
 ```
 
 
-![png](output_104_0.png)
+![png](/output/output_104_0.png)
 
 
 
-![png](output_104_1.png)
+![png](/output/output_104_1.png)
 
 
 The graphs show that Western Europe is the region with the greatest number of orders, and also has the greatest total revenue. However, North America has the most expensive order on average (followed by Western Europe). Southern and Eastern Europe has the lowest number of orders, lowest total revenue, and cheapest order on average. The third graph lent support to the alternate hypothesis that there are significant differences in average order revenue between regions. 
@@ -3176,7 +3176,7 @@ ax.set_title('Average Order Revenue by Region', fontdict={'family': 'PT Mono', '
 
 
 
-![png](output_108_1.png)
+![png](/output/output_108_1.png)
 
 
 ### Normality
@@ -3474,7 +3474,7 @@ for region in set(logRegion_df.Region):
 ```
 
 
-![png](output_118_0.png)
+![png](/output/output_118_0.png)
 
 
 
@@ -4305,7 +4305,7 @@ ax.set_title('Monthly Order Qty', fontdict={'family': 'PT Mono', 'size':16})
 
 
 
-![png](output_136_1.png)
+![png](/output/output_136_1.png)
 
 
 
@@ -4333,7 +4333,7 @@ ax.set_title('Monthly Order Qty', fontdict={'family': 'PT Mono', 'size':16})
 
 
 
-![png](output_137_1.png)
+![png](/output/output_137_1.png)
 
 
 
@@ -4907,7 +4907,7 @@ for k,v in rev_per_cat.items():
 ```
 
 
-![png](output_156_0.png)
+![png](/output/output_156_0.png)
 
 
 
